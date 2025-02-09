@@ -79,7 +79,7 @@ export default function SideBar() {
   ];
   return (
     <div className="flex flex-col justify-between space-y-4">
-      <div className="flex flex-col w-full h-fit container lg:w-[22.938rem] lg:h-[65.875rem] pt-4 px-3 bg-white opacity-100 rounded-2xl">
+      <div className="flex flex-col w-full h-fit container lg:w-[22.938rem] py-4 px-3 bg-white opacity-100 rounded-2xl">
         <div className="flex flex-row justify-between items-center pb-4">
           <h3 className="card-title-24pt font-extrabold text-left pl-4 opacity-100">
             Patients
@@ -91,7 +91,7 @@ export default function SideBar() {
             height={16}
           />
         </div>
-        <div className="grid grid-cols-3 gap-4 w-full h-fit mb-2 lg:mb-0 lg:flex flex-col overflow-y-auto scrollbar-custom pr-2">
+        <div className="grid grid-cols-3 gap-4 w-full h-fit lg:h-[67rem] mb-2 lg:mb-0 lg:flex flex-col overflow-y-auto scrollbar-custom pr-2">
           {patients.map((patient, index) => (
             <div
               key={index}

@@ -2,15 +2,54 @@
 import Image from "next/image";
 
 export default function ProfilePage() {
-  const labResults = ["Blood Tests", "CT Scans", "Radiology Reports", "X-Rays"];
+  const labResults = [
+    "Blood Tests",
+    "CT Scans",
+    "Radiology Reports",
+    "X-Rays",
+    "MRI Scans",
+    "Ultrasound",
+    "ECG",
+    "Endoscopy",
+    "Colonoscopy",
+    "Biopsy",
+    "Pap Smear",
+    "Mammogram",
+    "Bone Density Test",
+    "Allergy Tests",
+    "HIV Test",
+    "Pregnancy Test",
+    "Urine Tests",
+    "Stool Tests",
+    "Sputum Tests",
+    "Biometric Screening",
+    "Genetic Testing",
+    "Drug Tests",
+    "Alcohol Tests",
+    "Thyroid Tests",
+    "Liver Function Tests",
+    "Kidney Function Tests",
+    "Pancreatic Function Tests",
+    "Cardiac Enzyme Tests",
+    "Blood Clotting Tests",
+    "Tumor Marker Tests",
+    "Cancer Screening Tests",
+    "Diabetes Tests",
+    "Cholesterol Tests",
+    "Blood Pressure Tests",
+    "Vitamin Tests",
+    "Mineral Tests",
+    "Hormone Tests",
+    "Infectious Disease Tests",
+  ];
 
   return (
     <div className="flex flex-col space-y-4">
-      <div className="flex flex-col container w-full lg:w-[22.938rem] mt-3 mb-2 py-4 px-3 bg-white opacity-100 rounded-2xl space-y-4">
+      <div className="flex flex-col container w-full h-auto lg:w-[22.938rem] my-3 py-4 px-3 bg-white opacity-100 rounded-2xl space-y-4">
         <p className="card-title-24pt mx-2 mt-1 pb-2 lg:pb-0 font-extrabold text-left font-Manrope">
           Lab Results
         </p>
-        <div className="grid grid-cols-4 gap-4 lg:flex flex-col body-emphasized-14pt">
+        <div className="grid grid-cols-4 gap-4 lg:flex flex-col body-emphasized-14pt lg:h-[18rem] lg:overflow-y-auto lg:scrollbar-custom pr-2">
           {labResults.map((result, index) => (
             <div
               key={index}

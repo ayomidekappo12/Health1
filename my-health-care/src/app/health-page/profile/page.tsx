@@ -10,8 +10,8 @@ export default function ProfilePage() {
   const [loading] = useState(false);
 
   return (
-    <div className="flex flex-col justify-between space-y-4 lg:space-y-2">
-      <div className="grid grid-cols-3 w-full h-fit lg:flex flex-col container lg:w-[22.938rem] lg:h-[47.25rem] py-4 px-2 bg-white rounded-2xl">
+    <div className="flex flex-col justify-between space-y-4 lg:space-y-2 h-fit">
+      <div className="grid grid-cols-3 w-full h-full lg:flex flex-col container lg:w-[22.938rem] py-4 px-2 bg-white rounded-2xl">
         <div className="flex flex-col items-center space-y-2">
           <Image
             src="/images/Layer2/Layer 2.png"

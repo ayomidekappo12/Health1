@@ -117,7 +117,7 @@ export default function navMenu() {
               alt="profile"
               width={44}
               height={44}
-              className="rounded-full bg-transparent"
+              className="rounded-full bg-transparent transition-transform transform hover:scale-110"
               loading="lazy"
             />
             <div className="flex flex-col">
@@ -165,7 +165,7 @@ function NavItem({ src, text, href }: NavItemProps) {
         isActive
           ? "bg-[#01F0D0] body-emphasized-14pt bold rounded-full cursor-pointer py-3 px-5"
           : "body-emphasized-14pt bold"
-      } flex items-center gap-2 cursor-pointer body-emphasized-14pt bold`}
+      } flex items-center gap-2 cursor-pointer body-emphasized-14pt bold transition-transform transform hover:scale-110`}
       onClick={() => router.push(href)}
     >
       <Image

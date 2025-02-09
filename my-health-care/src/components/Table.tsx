@@ -13,8 +13,8 @@ interface TableProps {
 
 const Table: React.FC<TableProps> = ({ data }) => {
   return (
-    <div className="flex flex-col py-6 lg:py-6">
-      <div className="flex flex-row items-center justify-between bg-[#F6F7F8] rounded-3xl w-full lg:w-[45.375rem] lg:h-[3rem] opacity-100 mb-2 lg:mb-0 mr-1 lg:mx-1.5 px-4 py-6">
+    <div className="flex flex-col py-6 my-1">
+      <div className="flex flex-row items-center justify-between bg-[#F6F7F8] rounded-3xl w-full lg:w-[45.375rem] lg:h-fit opacity-100 mb-2 lg:mb-1 mr-1 lg:mx-1.5 px-4 py-4">
         <p className="flex-[1.2] text-left body-emphasized-14pt text-[#072635]">
           Problem/Diagnosis
         </p>

@@ -82,15 +82,15 @@ const BloodPressureChart = () => {
   };
 
   return (
-    <div className="flex justify-between gap-0 pt-2">
-      <div className="flex w-[32.25rem] h-[15.625rem] justify-between gap-4">
+    <div className="flex justify-between gap-4 py-4">
+      <div className="flex w-[33.25rem] h-[19rem] justify-between pb-2 gap-4">
         <div className="flex-grow">
           <div className="flex justify-between w-full mb-0">
-            <p className="text-[#072635] inner-card-title-18pt font-bold font-Manrope pt-3">
+            <p className="text-[#072635] inner-card-title-18pt font-bold font-Manrope pt-2.5">
               Blood Pressure
             </p>
             <div className="flex flex-row gap-2 mr-3">
-              <p className="body-regular-14 font-medium font-Manrope pt-4">
+              <p className="body-regular-14 font-medium font-Manrope pt-3.5">
                 Last 6 months
               </p>
               <IconButton
@@ -101,20 +101,24 @@ const BloodPressureChart = () => {
               />
             </div>
           </div>
-          <Line data={data} options={options} />
+          <Line
+            data={data}
+            options={options}
+            className="w-[32rem] h-full pb-2"
+          />
         </div>
       </div>
 
-      <div className="flex flex-col mt-4 space-y-6">
+      <div className="flex flex-col lg:w-40 pt-3.5 gap-2">
         <div className="flex flex-col space-y-2">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center">
             <div className="w-3.5 h-3.5 rounded-full bg-[#E66FD2]"></div>
-            <p className="font-Manrope font-bold text-[#072635] text-lg">
+            <p className="font-Manrope font-bold text-[#072635] text-lg px-1">
               Systolic
             </p>
           </div>
           <p className="font-Manrope font-bold text-[#072635] text-xl">160</p>
-          <div className="flex items-center justify-between w-full mt-1 gap-2">
+          <div className="flex items-center justify-between w-full mt-4">
             <Image
               src="/images/ArrowUp.svg"
               alt="Arrow Up"
@@ -125,12 +129,12 @@ const BloodPressureChart = () => {
             <p className="text-right body-regular-14">Higher than Average</p>
           </div>
         </div>
-        <hr className="border border-gray-300 w-full" />
+        <hr className="border border-gray-300 w-full mt-6" />
 
-        <div className="flex flex-col space-y-2">
-          <div className="flex items-center space-x-2">
+        <div className="flex flex-col space-y-2 mt-2">
+          <div className="flex items-center">
             <div className="w-3.5 h-3.5 rounded-full bg-[#8C6FE6]"></div>
-            <p className="font-Manrope font-bold text-[#072635] text-lg">
+            <p className="font-Manrope font-bold text-[#072635] text-lg px-1">
               Diastolic
             </p>
           </div>
