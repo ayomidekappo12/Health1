@@ -1,11 +1,13 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "next/typescript",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "globals": {
+    "AudioWorkletGlobalScope": true
+  },
   "settings": {
     "react": {
       "version": "detect"
