@@ -61,7 +61,7 @@ export default function navMenu() {
             <DropdownMenuTrigger asChild>
               <div className="flex flex-row items-center space-x-2 py-2">
                 <svg
-                  className="w-18 h-16 me-2 text-[#072635] rounded-2xl p-1 bg-gray-100 shrink-0 bg-transparent"
+                  className="w-20 h-18 me-2 text-[#072635] rounded-2xl p-1 bg-gray-100 shrink-0 bg-transparent cursor-pointer"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="manBold"
                   viewBox="0 0 24 24"
@@ -72,12 +72,12 @@ export default function navMenu() {
                 </svg>
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full body-emphasized-14pt bg-white divide-y divide-gray-100 rounded-lg shadow">
+            <DropdownMenuContent className="w-full mx-24 body-emphasized-14pt bg-white divide-y divide-gray-100 rounded-lg shadow">
               <ul className="py-2 body-emphasized-14pt font-bold">
                 <li>
                   <Link
                     href="/patients"
-                    className="block px-5 py-3 body-emphasized-14pt hover:bg-gray-100"
+                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
                   >
                     Patients
                   </Link>
@@ -85,7 +85,7 @@ export default function navMenu() {
                 <li>
                   <Link
                     href="/schedule"
-                    className="block px-5 py-3 body-emphasized-14pt hover:bg-gray-100"
+                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
                   >
                     Schedule
                   </Link>
@@ -93,7 +93,7 @@ export default function navMenu() {
                 <li>
                   <Link
                     href="/message"
-                    className="block px-5 py-3 body-emphasized-14pt hover:bg-gray-100"
+                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
                   >
                     Message
                   </Link>
@@ -101,7 +101,7 @@ export default function navMenu() {
                 <li>
                   <Link
                     href="/transactions"
-                    className="block px-5 py-3 body-emphasized-14pt hover:bg-gray-100"
+                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
                   >
                     Transactions
                   </Link>
