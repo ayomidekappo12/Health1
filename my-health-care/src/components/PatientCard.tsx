@@ -18,8 +18,12 @@ export default function PatientCard({
 }: PatientCardProps) {
   return (
     <div className="mt-3">
-      <div className={cn("flex flex-row items-center px-3 opacity-100 gap-4 mt-3",className
-        )}>
+      <div
+        className={cn(
+          "flex flex-row items-center px-3 opacity-100 gap-4",
+          className
+        )}
+      >
         <Image
           src={imageSrc}
           alt={`${value}'s profile`}

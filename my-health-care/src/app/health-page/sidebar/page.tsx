@@ -79,9 +79,9 @@ export default function SideBar() {
   ];
   return (
     <div className="flex flex-col justify-between space-y-4">
-      <div className="flex flex-col w-full h-fit container lg:w-[22.938rem] py-4 px-3 bg-white opacity-100 rounded-2xl">
+      <div className="flex flex-col w-full h-fit max-w-screen container lg:w-[22.938rem] py-4 px-3 bg-white opacity-100 rounded-2xl">
         <div className="flex flex-row justify-between items-center pb-4">
-          <h3 className=" my-2 lg:my-0 card-title-24pt font-extrabold text-left pl-4 opacity-100">
+          <h3 className="my-2 lg:my-0 card-title-24pt font-extrabold text-left pl-4 opacity-100">
             Patients
           </h3>
           <IconButton
@@ -91,11 +91,11 @@ export default function SideBar() {
             height={16}
           />
         </div>
-        <div className="grid grid-cols-2 gap-8 w-full h-fit lg:h-[67rem] mb-2 lg:mb-0 lg:gap-4 lg:flex flex-col overflow-y-auto scrollbar-custom pr-2">
+        <div className="h-svh lg:lg:h-[67rem] space-y-12 lg:space-y-0 lg:gap-6 flex flex-col overflow-y-auto scrollbar-custom pr-2">
           {patients.map((patient, index) => (
             <div
               key={index}
-              className="flex flex-row items-center justify-around lg:justify-between mt-3 lg:mt-0"
+              className="flex flex-row items-center justify-between mx-6 lg:mx-0"
             >
               <PatientCard
                 imageSrc={patient.imageSrc}
@@ -105,7 +105,7 @@ export default function SideBar() {
               />
               <IconButton
                 imageSrc="/images/more_horiz_FILL0_wght300_GRAD0_opsz24.svg"
-                className="lg:-me-1"
+                className="-me-1"
                 width={18}
                 height={4}
               />

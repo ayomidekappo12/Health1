@@ -31,7 +31,7 @@ const sampleData = [
 
 export default function HomePage() {
   return (
-    <main className="w-full justify-between mt-6 mb-4 flex flex-col lg:flex-row space-y-6 lg:space-y-0 overflow-hidden">
+    <main className="w-full justify-between mt-6 mb-4 flex flex-col lg:flex-row space-y-14 lg:space-y-0 overflow-hidden">
       <div className="lg:order-last order-first flex flex-col container lg:px-0">
         <Profile />
       </div>
@@ -46,8 +46,8 @@ export default function HomePage() {
           <div className="hidden lg:flex container bg-[#F4F0FE] rounded-xl w-[45.375rem] h-[20.625rem] opacity-100 pl-2.5">
             <Chart />
           </div>
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-4">
-            <div className="flex flex-col bg-[#E0F3FA] rounded-xl h-full lg:h-fit p-4">
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-4 mt-6 mb-4">
+            <div className="flex flex-col bg-[#E0F3FA] rounded-xl h-full lg:h-fit mx-9 md:mx-0 p-4">
               <Image
                 src="/images/respiratory rate.svg"
                 alt="Respiratory-rate"
@@ -68,7 +68,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="flex flex-col bg-[#FFE6E9] rounded-xl h-full lg:h-fit p-4">
+            <div className="flex flex-col bg-[#FFE6E9] rounded-xl h-full lg:h-fit mx-9 md:mx-0 p-4">
               <Image
                 src="/images/temperature.svg"
                 alt="Temperature"
@@ -89,7 +89,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="flex flex-col bg-[#FFE6F1] rounded-xl h-full lg:h-fit p-4">
+            <div className="flex flex-col bg-[#FFE6F1] rounded-xl h-full lg:h-fit mx-9 md:mx-0 p-4">
               <Image
                 src="/images/HeartBPM.svg"
                 alt="Heart Rate"
