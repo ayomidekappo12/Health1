@@ -39,7 +39,7 @@ export default function HomePage() {
         <SideBar />
       </div>
       <div className="flex flex-col flex-1 container space-y-6 order-none shrink-0 lg:px-0">
-        <div className="flex flex-col container w-full h-auto lg:w-[48rem] lg:h-fit rounded-2xl opacity-100 bg-white overflow-hidden px-3 py-5">
+        <div className="flex flex-col container w-full h-auto lg:w-[48rem] lg:h-fit rounded-2xl opacity-100 bg-white overflow-hidden px-3 py-5 mb-8 lg:mb-0">
           <p className="card-title-24pt my-2 lg:m-2 pb-2 font-extrabold text-left font-Manrope">
             Diagnosis History
           </p>
@@ -120,7 +120,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="flex flex-col container w-full h-fit lg:w-[48rem] lg:h-fit rounded-2xl opacity-100 bg-white overflow-hidden p-3">
-          <p className="card-title-24pt mx-2 mt-4 mb-2 lg:mt-2 lg:mb-1 font-extrabold text-left font-Manrope">
+          <p className="card-title-24pt mx-2 mt-5 mb-3 lg:mt-2 lg:mb-1 font-extrabold text-left font-Manrope">
             Diagnostic List
           </p>
           <div className="flex flex-col">
