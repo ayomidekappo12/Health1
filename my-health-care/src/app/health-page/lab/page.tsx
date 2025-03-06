@@ -53,7 +53,7 @@ export default function ProfilePage() {
           {labResults.map((result, index) => (
             <div
               key={index}
-              className="flex flex-row items-center justify-between bg-white body-emphasized-14pt mx-12 lg:mx-0 px-4 my-2 py-8 lg:my-0 lg:py-3 hover:bg-[#F6F7F8] cursor-pointer"
+              className="flex flex-row items-center justify-between bg-white body-emphasized-14pt mx-12 lg:mx-0 px-4 my-2 py-8  lg:py-2.5 hover:bg-[#F6F7F8] cursor-pointer"
             >
               <p className="text-left font-Manrope body-emphasized-14pt text-[#072635]">
                 {result}
