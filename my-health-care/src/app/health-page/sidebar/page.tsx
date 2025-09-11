@@ -79,9 +79,9 @@ export default function SideBar() {
   ];
   return (
     <div className="flex flex-col justify-between space-y-4">
-      <div className="flex flex-col w-full h-fit max-w-screen container lg:w-[22.938rem] py-4 px-3 bg-white opacity-100 rounded-2xl">
+      <div className="flex flex-col h-fit max-w-screen container py-4 px-3 bg-white rounded-2xl">
         <div className="flex flex-row justify-between items-center pb-4">
-          <h3 className="my-2 lg:my-0 card-title-24pt font-extrabold text-left pl-4 opacity-100">
+          <h3 className="my-2 lg:my-0 card-title text-left pl-4">
             Patients
           </h3>
           <IconButton
@@ -91,7 +91,7 @@ export default function SideBar() {
             height={16}
           />
         </div>
-        <div className="h-svh lg:lg:h-[67rem] space-y-12 lg:space-y-0 lg:gap-6 flex flex-col overflow-y-auto scrollbar-custom pr-2">
+        <div className="h-svh space-y-12 lg:space-y-0 gap-6 flex overflow-y-auto scrollbar-custom pr-2">
           {patients.map((patient, index) => (
             <div
               key={index}

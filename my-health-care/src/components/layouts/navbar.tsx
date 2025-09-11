@@ -17,7 +17,7 @@ interface NavItemProps {
 export default function navMenu() {
   return (
     <div className="flex w-full mx-auto shrink-0 overflow-hidden">
-      <div className="flex w-full h-fit mt-5 bg-white rounded-3xl mx-4 font-Manrope items-center px-8 justify-between overflow-hidden">
+      <div className="flex h-fit mt-5 bg-white rounded-3xl mx-4 items-center px-8 justify-between overflow-hidden">
         <div className="flex items-center">
           <Image
             src="/images/TestLogo.svg"
@@ -29,7 +29,7 @@ export default function navMenu() {
           />
         </div>
 
-        <div className="hidden md:flex  items-center gap-4 md:gap-8 body-emphasized-14pt bold justify-center">
+        <div className="hidden md:flex items-center gap-4 md:gap-8 body-bold justify-center">
           <NavItem
             src="/images/home_FILL0_wght300_GRAD0_opsz24.svg"
             text="Overview"
@@ -61,7 +61,7 @@ export default function navMenu() {
             <DropdownMenuTrigger asChild>
               <div className="flex flex-row items-center space-x-2 py-2">
                 <svg
-                  className="w-20 h-18 me-2 text-[#072635] rounded-2xl p-1 bg-gray-100 shrink-0 bg-transparent cursor-pointer"
+                  className="w-20 h-18 me-2 rounded-2xl p-1 bg-gray-100 shrink-0 bg-transparent cursor-pointer"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="manBold"
                   viewBox="0 0 24 24"
@@ -72,12 +72,12 @@ export default function navMenu() {
                 </svg>
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-full mx-24 body-emphasized-14pt bg-white divide-y divide-gray-100 rounded-lg shadow">
-              <ul className="py-2 body-emphasized-14pt font-bold">
+            <DropdownMenuContent className="w-full mx-24 body-bold bg-white divide-y divide-gray-100 rounded-lg shadow">
+              <ul className="block px-5 py-8 my-4 body-bold">
                 <li>
                   <Link
                     href="/patients"
-                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
+                    className="body-bold hover:bg-gray-100"
                   >
                     Patients
                   </Link>
@@ -85,7 +85,7 @@ export default function navMenu() {
                 <li>
                   <Link
                     href="/schedule"
-                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
+                    className="body-bold hover:bg-gray-100"
                   >
                     Schedule
                   </Link>
@@ -93,7 +93,7 @@ export default function navMenu() {
                 <li>
                   <Link
                     href="/message"
-                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
+                    className="body-bold hover:bg-gray-100"
                   >
                     Message
                   </Link>
@@ -101,7 +101,7 @@ export default function navMenu() {
                 <li>
                   <Link
                     href="/transactions"
-                    className="block px-5 py-8 my-4 body-emphasized-14pt hover:bg-gray-100"
+                    className="body-bold hover:bg-gray-100"
                   >
                     Transactions
                   </Link>
@@ -121,9 +121,7 @@ export default function navMenu() {
               loading="lazy"
             />
             <div className="flex flex-col">
-              <p className="font-Manrope body-emphasized-14pt bold">
-                Dr. Jose Simmons
-              </p>
+              <p className="font-Manrope body-bold bold">Dr. Jose Simmons</p>
               <p className="font-Manrope body-secondary-info-14pt">
                 General Practitioner
               </p>
@@ -163,9 +161,9 @@ function NavItem({ src, text, href }: NavItemProps) {
     <div
       className={`${
         isActive
-          ? "bg-[#01F0D0] body-emphasized-14pt bold rounded-full cursor-pointer py-3 px-5"
-          : "body-emphasized-14pt bold"
-      } flex items-center gap-2 cursor-pointer body-emphasized-14pt bold transition-transform transform hover:scale-110`}
+          ? "bg-[#01F0D0] body-bold bold rounded-full cursor-pointer py-3 px-5"
+          : "body-bold bold"
+      } flex items-center gap-2 cursor-pointer body-bold bold transition-transform transform hover:scale-110`}
       onClick={() => router.push(href)}
     >
       <Image
@@ -176,7 +174,7 @@ function NavItem({ src, text, href }: NavItemProps) {
         loading="lazy"
         className="bg-transparent shrink-0"
       />
-      <p className={`font-Manrope body-emphasized-14pt bold shrink-0`}>
+      <p className={`font-Manrope body-bold bold shrink-0`}>
         {text}
       </p>
     </div>
