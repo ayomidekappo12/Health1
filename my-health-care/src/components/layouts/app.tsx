@@ -2,7 +2,7 @@
 
 import React from "react";
 import { SWRConfig } from "swr";
-import Navbar from "./navbar";
+import Header from "./header";
 import { Toaster } from "../ui/toaster";
 import { LoadingIndicatorProvider } from "@/lib/LoadingIndicatorProvider";
 
@@ -10,7 +10,7 @@ const App = ({ children }: { children: React.ReactNode }) => {
   return (
     <SWRConfig>
       <LoadingIndicatorProvider />
-      <Navbar />
+      <Header />
       {children}
       <Toaster />
     </SWRConfig>

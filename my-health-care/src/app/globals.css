@@ -28,6 +28,10 @@
     --gray-bg: #ededed;
     --white: #ffffff;
     --black: #000000;
+    --primary: #344256;
+    --border: #e5e7eb;
+    --cards: #fafafa;
+    --secondary: #f8fafc;
 
     --alert-orange: #ff6200;
 
@@ -196,25 +200,7 @@
     color: var(--text-dark);
   }
 
-  /* ─────────────────────────────
-     🔳 Layout Utilities
-     ───────────────────────────── */
-
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: minmax(200px, auto);
-  }
-
-  .grid-item {
-    padding: 10px;
-  }
-
-  .aspect-box {
-    aspect-ratio: 16 / 9;
-  }
-
-  /* Custom Scrollbar */
+    /* Custom Scrollbar */
   .scrollbar-custom {
   &::-webkit-scrollbar {
     width: 6px;
@@ -228,20 +214,15 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--text-dark);
+    background-color: var(--gray-base);
     border-radius: 3px;
     min-height: 100px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 
     &:hover {
-      background-color: #0f4054;
+      background-color: #000000;
       transform: scale(1.1);
     }
   }
 }
-
-
-  html {
-    font-size: calc(100vw / 1600 * 16);
-  }
 }

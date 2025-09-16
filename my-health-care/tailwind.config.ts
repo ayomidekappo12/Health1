@@ -8,23 +8,24 @@ const config: Config = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  prefix: "",
   theme: {
     container: {
       center: true,
       padding: "2rem",
       screens: {
-        sm: "640px",
-        md: "768px",
-        lg: "1024px",
-        xl: "1280px",
-        "2xl": "1536px",
+        "2xl": "1400px",
       },
     },
     extend: {
       colors: {
         /* Brand + System Colors */
-        primary: "#705aaa",
+        primary: "#344256",
         accent: "#cbc8d4",
+        black: "#000000",
+        white: "#ffffff",
+        cards: "#fafafa",
+        secondary: "#f8fafc",
 
         /* State + Feedback */
         "active-bg-1": "#01f0d0",
@@ -43,11 +44,9 @@ const config: Config = {
         "gray-light": "#878787",
         "gray-bg-light": "#f6f6f6",
         "gray-bg": "#ededed",
-        black: "#000000",
-        white: "#ffffff",
 
         /* System palette support */
-        border: "hsl(var(--border))",
+        border: "#e5e7eb",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
@@ -104,10 +103,6 @@ const config: Config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      aspectRatio: {
-        "16/9": "16 / 9",
-        "4/3": "4 / 3",
       },
     },
   },
