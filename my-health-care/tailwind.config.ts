@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+import animate from "tailwindcss-animate";
 
 const config: Config = {
   darkMode: "class",
@@ -8,7 +10,6 @@ const config: Config = {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -19,38 +20,34 @@ const config: Config = {
     },
     extend: {
       colors: {
-        /* Brand + System Colors */
-        primary: "#344256",
-        accent: "#cbc8d4",
-        black: "#000000",
-        white: "#ffffff",
-        cards: "#fafafa",
-        secondary: "#f8fafc",
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        accent: "var(--accent-purple-light)",
+        cards: "var(--cards)",
+        border: "var(--border)",
+        black: "var(--black)",
+        white: "var(--white)",
 
-        /* State + Feedback */
-        "active-bg-1": "#01f0d0",
-        "active-bg-2": "#d8fcf7",
-        "success-green": "#0bd984",
-        "alert-orange": "#ff6200",
+        "active-bg-1": "var(--active-bg-1)",
+        "active-bg-2": "var(--active-bg-2)",
+        "success-green": "var(--success-green)",
+        "alert-orange": "var(--alert-orange)",
 
-        /* Grays & Base */
-        "text-dark": "#072635",
-        "text-darker": "#0c3d5d",
-        "text-blue-dark": "#084c77",
-        "blue-medium": "#055a92",
-        "blue-strong": "#006aac",
-        "blue-deep": "#007bc7",
-        "gray-base": "#707070",
-        "gray-light": "#878787",
-        "gray-bg-light": "#f6f6f6",
-        "gray-bg": "#ededed",
+        "text-dark": "var(--text-dark)",
+        "text-darker": "var(--text-darker)",
+        "text-blue-dark": "var(--text-blue-dark)",
+        "blue-medium": "var(--blue-medium)",
+        "blue-strong": "var(--blue-strong)",
+        "blue-deep": "var(--blue-deep)",
+        "gray-base": "var(--gray-base)",
+        "gray-light": "var(--gray-light)",
+        "gray-bg-light": "var(--gray-bg-light)",
+        "gray-bg": "var(--gray-bg)",
 
-        /* System palette support */
-        border: "#e5e7eb",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -76,14 +73,14 @@ const config: Config = {
         sans: ["Manrope", "sans-serif"],
       },
       fontSize: {
-        xs: ["0.75rem", "1.0625rem"], // 12px / 17px
-        sm: ["0.8125rem", "1.125rem"], // 13px / 18px
-        base: ["0.875rem", "1.1875rem"], // 14px / 19px
-        md: ["1rem", "1.375rem"], // 16px / 22px
-        lg: ["1.125rem", "1.5rem"], // 18px / 24px
-        xl: ["1.375rem", "1.875rem"], // 22px / 30px
-        "2xl": ["1.5rem", "2.0625rem"], // 24px / 33px
-        "3xl": ["1.875rem", "2.5625rem"], // 30px / 41px
+        xs: ["var(--font-size-12)", "var(--line-height-17)"],
+        sm: ["var(--font-size-13)", "var(--line-height-18)"],
+        base: ["var(--font-size-14)", "var(--line-height-19)"],
+        md: ["var(--font-size-16)", "var(--line-height-22)"],
+        lg: ["var(--font-size-18)", "var(--line-height-24)"],
+        xl: ["var(--font-size-22)", "var(--line-height-30)"],
+        "2xl": ["var(--font-size-24)", "var(--line-height-33)"],
+        "3xl": ["var(--font-size-30)", "var(--line-height-41)"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -106,7 +103,114 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    animate,
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        /* Legacy style equivalents */
+        ".text-card-title": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-extrabold)",
+          fontSize: "var(--font-size-24)",
+          lineHeight: "var(--line-height-33)",
+          color: "var(--text-dark)",
+        },
+        ".text-title-inner": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-bold)",
+          fontSize: "var(--font-size-18)",
+          lineHeight: "var(--line-height-24)",
+          color: "var(--text-dark)",
+          textTransform: "capitalize",
+        },
+        ".text-body-bold": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-bold)",
+          fontSize: "var(--font-size-14)",
+          lineHeight: "var(--line-height-19)",
+          color: "var(--text-dark)",
+        },
+        ".text-body-secondary": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-normal)",
+          fontSize: "var(--font-size-14)",
+          lineHeight: "var(--line-height-19)",
+          color: "var(--gray-base)",
+        },
+        ".text-body-regular": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-normal)",
+          fontSize: "var(--font-size-14)",
+          lineHeight: "var(--line-height-19)",
+          color: "var(--text-dark)",
+        },
+
+        /* Extended manrope styles */
+        ".text-manrope-regular-xs": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-normal)",
+          fontSize: "var(--font-size-12)",
+          lineHeight: "var(--line-height-17)",
+          color: "var(--text-dark)",
+        },
+        ".text-manrope-regular-sm": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-normal)",
+          fontSize: "var(--font-size-13)",
+          lineHeight: "var(--line-height-18)",
+          color: "var(--text-dark)",
+          textTransform: "capitalize",
+        },
+        ".text-manrope-regular-md": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-normal)",
+          fontSize: "var(--font-size-14)",
+          lineHeight: "var(--line-height-19)",
+          color: "var(--text-dark)",
+          textTransform: "capitalize",
+        },
+        ".text-manrope-medium-md": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-medium)",
+          fontSize: "var(--font-size-14)",
+          lineHeight: "var(--line-height-19)",
+          color: "var(--text-dark)",
+          textTransform: "capitalize",
+        },
+        ".text-manrope-medium-lg": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-medium)",
+          fontSize: "var(--font-size-16)",
+          lineHeight: "var(--line-height-22)",
+          color: "var(--text-dark)",
+          textTransform: "capitalize",
+        },
+        ".text-manrope-bold-md": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-bold)",
+          fontSize: "var(--font-size-14)",
+          lineHeight: "var(--line-height-19)",
+          color: "var(--text-dark)",
+          textTransform: "capitalize",
+        },
+        ".text-manrope-bold-xl": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-bold)",
+          fontSize: "var(--font-size-22)",
+          lineHeight: "var(--line-height-30)",
+          color: "var(--text-dark)",
+          textTransform: "capitalize",
+        },
+        ".text-manrope-extrabold-2xl": {
+          fontFamily: "var(--font-family-manrope)",
+          fontWeight: "var(--font-weight-extrabold)",
+          fontSize: "var(--font-size-30)",
+          lineHeight: "var(--line-height-41)",
+          color: "var(--text-dark)",
+        },
+      });
+    }),
+  ],
 };
 
 export default config;

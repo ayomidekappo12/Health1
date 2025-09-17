@@ -19,22 +19,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Load Chart.js via Next.js Script */}
+        {/* ✅ Load Chart.js before React hydrates */}
         <Script
           id="chartjs"
           src="https://cdn.jsdelivr.net/npm/chart.js"
           strategy="beforeInteractive"
         />
       </head>
-      <body className={`${inter.className} bg-[#F6F7F8]`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body
+        className={`${inter.className} bg-[#F6F7F8] text-text-dark antialiased`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <App>{children}</App>
         </ThemeProvider>
       </body>
