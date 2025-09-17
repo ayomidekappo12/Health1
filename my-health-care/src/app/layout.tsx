@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* ✅ Load Chart.js before React hydrates */}
+        {/* Load Chart.js before React hydrates */}
         <Script
           id="chartjs"
           src="https://cdn.jsdelivr.net/npm/chart.js"
