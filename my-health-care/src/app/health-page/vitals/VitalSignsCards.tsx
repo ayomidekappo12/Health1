@@ -53,7 +53,7 @@ const VitalSignsCards = () => {
                   </div>
                   <div>
                     <p className="body-secondary">{vital.title}</p>
-                    <p className="inner-card-title-md">{vital.value}</p>
+                    <p className="title-inner">{vital.value}</p>
                   </div>
                 </div>
               </div>

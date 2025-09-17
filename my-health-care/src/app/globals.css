@@ -110,26 +110,6 @@
   }
 
   /* Merged extended styles */
-  .card-title-lg {
-    @apply card-title;
-  }
-
-  .inner-card-title-md {
-    @apply title-inner;
-  }
-
-  .body-bold-sm {
-    @apply body-bold;
-  }
-
-  .body-secondary-sm {
-    @apply body-secondary;
-  }
-
-  .body-regular-sm {
-    @apply body-regular;
-  }
-
   .manrope-regular-xs {
     font-family: var(--font-family-manrope);
     font-weight: var(--font-weight-normal);

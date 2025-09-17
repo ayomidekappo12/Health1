@@ -33,7 +33,7 @@ const DiagnosisHistory = () => {
     <div className="flex-1 p-4 md:p-6 space-y-6 bg-card">
       <Card className="bg-white rounded-xl">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <CardTitle className="card-title-lg">Diagnosis History</CardTitle>
+          <CardTitle className="card-title">Diagnosis History</CardTitle>
           <Select defaultValue="last6months">
             <SelectTrigger className="w-full sm:w-40 manrope-regular-md bg-cards border-border rounded-xl">
               <SelectValue />
@@ -48,7 +48,7 @@ const DiagnosisHistory = () => {
         <CardContent>
           <div className="mb-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4">
-              <h3 className="inner-card-title-md">Blood Pressure</h3>
+              <h3 className="title-inner">Blood Pressure</h3>
               <div className="flex items-center gap-4 md:gap-6 text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-[#E66FD2]"></div>

@@ -20,7 +20,7 @@ import React from "react";
 interface NavItemProps {
   text: string;
   href: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 const navItems: NavItemProps[] = [

@@ -1,13 +1,34 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+// eslint.config.js
+import js from "@eslint/js";
+import reactPlugin from "eslint-plugin-react";
 import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
 
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
+  // Base configs
+  js.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  reactPlugin.configs.recommended,
+
+  {
+    settings: {
+      react: {
+        version: "detect",
+        jsxRuntime: "automatic", // React 17+ JSX transform
+      },
+    },
+    plugins: {
+      react: reactPlugin,
+      "@typescript-eslint": tseslint.plugin || tseslint,
+    },
+    rules: {
+      // React
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+
+      // TypeScript
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-unused-expressions": "warn",
+    },
+  },
 ];
