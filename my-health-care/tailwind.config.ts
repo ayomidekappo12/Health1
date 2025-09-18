@@ -1,14 +1,15 @@
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
 import animate from "tailwindcss-animate";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
   darkMode: "class",
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    "./src/app/**/*.{ts,tsx}",
+    "./src/components/**/*.{ts,tsx}",
+    "./src/lib/**/*.{ts,tsx}", // include utils
+    "./pages/**/*.{ts,tsx}", // if you still use /pages
   ],
   theme: {
     container: {
@@ -20,72 +21,16 @@ const config: Config = {
     },
     extend: {
       colors: {
-        primary: "var(--primary)",
-        secondary: "var(--secondary)",
-        accent: "var(--accent-purple-light)",
-        cards: "var(--cards)",
-        border: "var(--border)",
-        black: "var(--black)",
-        white: "var(--white)",
-
-        "active-bg-1": "var(--active-bg-1)",
-        "active-bg-2": "var(--active-bg-2)",
-        "success-green": "var(--success-green)",
-        "alert-orange": "var(--alert-orange)",
-
-        "text-dark": "var(--text-dark)",
-        "text-darker": "var(--text-darker)",
-        "text-blue-dark": "var(--text-blue-dark)",
-        "blue-medium": "var(--blue-medium)",
-        "blue-strong": "var(--blue-strong)",
-        "blue-deep": "var(--blue-deep)",
-        "gray-base": "var(--gray-base)",
-        "gray-light": "var(--gray-light)",
-        "gray-bg-light": "var(--gray-bg-light)",
-        "gray-bg": "var(--gray-bg)",
-
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      fontFamily: {
-        manrope: ["Manrope", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
-        urbanist: ["Urbanist", "sans-serif"],
-        fugaz: ['"Fugaz One"', "cursive"],
-        sans: ["Manrope", "sans-serif"],
-      },
-      fontSize: {
-        xs: ["var(--font-size-12)", "var(--line-height-17)"],
-        sm: ["var(--font-size-13)", "var(--line-height-18)"],
-        base: ["var(--font-size-14)", "var(--line-height-19)"],
-        md: ["var(--font-size-16)", "var(--line-height-22)"],
-        lg: ["var(--font-size-18)", "var(--line-height-24)"],
-        xl: ["var(--font-size-22)", "var(--line-height-30)"],
-        "2xl": ["var(--font-size-24)", "var(--line-height-33)"],
-        "3xl": ["var(--font-size-30)", "var(--line-height-41)"],
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        "primary-purple": "#705CF6",
+        "primary-black": "#1E1E1E",
+        "primary-gray": "#FAFAFA",
+        "secondary-gray": "#A7A7A7",
+        "secondary-lightGray": "#E5E7EB",
+        "secondary-white": "#FFFFFF",
+        "system-red": "#FF5A5A",
+        "system-green": "#22C55E",
+        "system-yellow": "#FACC15",
+        "system-blue": "#3B82F6",
       },
       keyframes: {
         "accordion-down": {
@@ -101,112 +46,65 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      typography: (theme: any) => ({
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": theme("colors.primary-black"),
+            "--tw-prose-headings": theme("colors.primary-black"),
+            "--tw-prose-lead": theme("colors.secondary-gray"),
+            "--tw-prose-links": theme("colors.primary-purple"),
+            "--tw-prose-bold": theme("colors.primary-black"),
+            "--tw-prose-counters": theme("colors.secondary-gray"),
+            "--tw-prose-bullets": theme("colors.secondary-gray"),
+            "--tw-prose-hr": theme("colors.secondary-lightGray"),
+            "--tw-prose-quotes": theme("colors.primary-black"),
+            "--tw-prose-quote-borders": theme("colors.secondary-lightGray"),
+            "--tw-prose-captions": theme("colors.secondary-gray"),
+            "--tw-prose-code": theme("colors.system-red"),
+            "--tw-prose-pre-code": theme("colors.secondary-white"),
+            "--tw-prose-pre-bg": theme("colors.primary-black"),
+            "--tw-prose-th-borders": theme("colors.secondary-lightGray"),
+            "--tw-prose-td-borders": theme("colors.secondary-lightGray"),
+          },
+        },
+        purple: {
+          css: {
+            "--tw-prose-headings": theme("colors.primary-purple"),
+            "--tw-prose-links": theme("colors.primary-purple"),
+            "--tw-prose-bold": theme("colors.primary-purple"),
+          },
+        },
+      }),
     },
   },
   plugins: [
     animate,
-    plugin(function ({ addUtilities }) {
+    typography,
+    plugin(({ addUtilities, theme }) => {
       addUtilities({
-        /* Legacy style equivalents */
-        ".text-card-title": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-extrabold)",
-          fontSize: "var(--font-size-24)",
-          lineHeight: "var(--line-height-33)",
-          color: "var(--text-dark)",
+        ".text-body": {
+          fontSize: theme("fontSize.base")[0],
+          lineHeight: theme("lineHeight.7"),
+          fontWeight: theme("fontWeight.normal"),
+          color: theme("colors.primary-black"),
         },
-        ".text-title-inner": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-bold)",
-          fontSize: "var(--font-size-18)",
-          lineHeight: "var(--line-height-24)",
-          color: "var(--text-dark)",
-          textTransform: "capitalize",
+        ".text-body-sm": {
+          fontSize: theme("fontSize.sm")[0],
+          lineHeight: theme("lineHeight.5"),
+          fontWeight: theme("fontWeight.normal"),
+          color: theme("colors.primary-black"),
         },
-        ".text-body-bold": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-bold)",
-          fontSize: "var(--font-size-14)",
-          lineHeight: "var(--line-height-19)",
-          color: "var(--text-dark)",
+        ".text-body-lg": {
+          fontSize: theme("fontSize.lg")[0],
+          lineHeight: theme("lineHeight.7"),
+          fontWeight: theme("fontWeight.normal"),
+          color: theme("colors.primary-black"),
         },
-        ".text-body-secondary": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-normal)",
-          fontSize: "var(--font-size-14)",
-          lineHeight: "var(--line-height-19)",
-          color: "var(--gray-base)",
-        },
-        ".text-body-regular": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-normal)",
-          fontSize: "var(--font-size-14)",
-          lineHeight: "var(--line-height-19)",
-          color: "var(--text-dark)",
-        },
-
-        /* Extended manrope styles */
-        ".text-manrope-regular-xs": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-normal)",
-          fontSize: "var(--font-size-12)",
-          lineHeight: "var(--line-height-17)",
-          color: "var(--text-dark)",
-        },
-        ".text-manrope-regular-sm": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-normal)",
-          fontSize: "var(--font-size-13)",
-          lineHeight: "var(--line-height-18)",
-          color: "var(--text-dark)",
-          textTransform: "capitalize",
-        },
-        ".text-manrope-regular-md": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-normal)",
-          fontSize: "var(--font-size-14)",
-          lineHeight: "var(--line-height-19)",
-          color: "var(--text-dark)",
-          textTransform: "capitalize",
-        },
-        ".text-manrope-medium-md": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-medium)",
-          fontSize: "var(--font-size-14)",
-          lineHeight: "var(--line-height-19)",
-          color: "var(--text-dark)",
-          textTransform: "capitalize",
-        },
-        ".text-manrope-medium-lg": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-medium)",
-          fontSize: "var(--font-size-16)",
-          lineHeight: "var(--line-height-22)",
-          color: "var(--text-dark)",
-          textTransform: "capitalize",
-        },
-        ".text-manrope-bold-md": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-bold)",
-          fontSize: "var(--font-size-14)",
-          lineHeight: "var(--line-height-19)",
-          color: "var(--text-dark)",
-          textTransform: "capitalize",
-        },
-        ".text-manrope-bold-xl": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-bold)",
-          fontSize: "var(--font-size-22)",
-          lineHeight: "var(--line-height-30)",
-          color: "var(--text-dark)",
-          textTransform: "capitalize",
-        },
-        ".text-manrope-extrabold-2xl": {
-          fontFamily: "var(--font-family-manrope)",
-          fontWeight: "var(--font-weight-extrabold)",
-          fontSize: "var(--font-size-30)",
-          lineHeight: "var(--line-height-41)",
-          color: "var(--text-dark)",
+        ".text-body-xl": {
+          fontSize: theme("fontSize.xl")[0],
+          lineHeight: theme("lineHeight.8"),
+          fontWeight: theme("fontWeight.normal"),
+          color: theme("colors.primary-black"),
         },
       });
     }),

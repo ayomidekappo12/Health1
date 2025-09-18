@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Next13ProgressBar } from "next13-progressbar";
+import NextTopLoader from "nextjs-toploader";
 
 interface LoadingIndicatorProviderProps {
   children?: React.ReactNode;
@@ -12,12 +12,7 @@ export const LoadingIndicatorProvider = ({
   return (
     <>
       {children}
-      <Next13ProgressBar
-        height="2px"
-        color="#3B82F6"
-        options={{ showSpinner: true }}
-        showOnShallow
-      />
+      <NextTopLoader height={2} color="#01f0d0" showSpinner={true} />
     </>
   );
 };

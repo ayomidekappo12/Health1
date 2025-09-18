@@ -29,7 +29,7 @@ interface SessionData {
   role?: string;
 }
 
-export const fetcher = async <T = unknown,>(url: string): Promise<T> => {
+export const fetcher = async <T = unknown>(url: string): Promise<T> => {
   let session: SessionData;
   try {
     const raw = await getSessionData();

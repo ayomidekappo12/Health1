@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/config/theme-provider";
 import App from "@/components/layouts/app";
 import Script from "next/script";
 
@@ -31,9 +30,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-[#F6F7F8] text-text-dark antialiased`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <App>{children}</App>
-        </ThemeProvider>
       </body>
     </html>
   );
