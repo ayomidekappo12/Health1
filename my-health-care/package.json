@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "next lint"
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.28.4",
@@ -58,6 +58,7 @@
     "eslint": "^9.35.0",
     "eslint-config-next": "^15.5.3",
     "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-tailwindcss": "^3.18.2",
     "next": "^15.5.3",
     "postcss": "^8",
     "postcss-nesting": "^13.0.2",

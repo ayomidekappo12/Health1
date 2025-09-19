@@ -2,7 +2,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { getSessionData } from "@/app/actions";
 import axios from "axios";
-import { normalizeError } from "@/lib/errors";
+import { normalizeError, NormalizedError } from "@/lib/errors";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -30,10 +30,17 @@ interface SessionData {
 }
 
 export const fetcher = async <T = unknown>(url: string): Promise<T> => {
-  let session: SessionData;
+  let session: SessionData = {};
+
   try {
     const raw = await getSessionData();
-    session = typeof raw === "string" ? JSON.parse(raw) : raw;
+
+    if (typeof raw === "string") {
+      // safely parse with a cast
+      session = JSON.parse(raw) as SessionData;
+    } else if (raw && typeof raw === "object") {
+      session = raw as SessionData;
+    }
   } catch {
     session = {};
   }
@@ -45,6 +52,7 @@ export const fetcher = async <T = unknown>(url: string): Promise<T> => {
     const res = await api.get<T>(url, config);
     return res.data;
   } catch (err) {
-    throw normalizeError(err);
+    throw new NormalizedError(normalizeError(err));
   }
 };
+

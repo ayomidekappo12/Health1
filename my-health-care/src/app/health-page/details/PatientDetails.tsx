@@ -17,7 +17,7 @@ const PatientDetails = () => {
             />
             <AvatarFallback>JT</AvatarFallback>
           </Avatar>
-          <h3 className="title-inner mb-2">Jessica Taylor</h3>
+          <h3 className="mb-2">Jessica Taylor</h3>
         </CardContent>
       </Card>
 

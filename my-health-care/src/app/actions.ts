@@ -18,17 +18,19 @@ let memorySession: SessionData | null = null;
  */
 async function getCookieStore() {
   const result = cookies();
-  if (result instanceof Promise) {
-    return await result; // Next.js 15+
+
+  // Check if result is a Promise-like object
+  if (result && typeof result === "object" && "then" in result) {
+    return await result;
   }
-  return result; // Next.js 13/14
+
+  return result;
 }
 
 async function getSession(): Promise<IronSession<SessionData>> {
   try {
     const cookieStore = await getCookieStore();
-
-    return await getIronSession<SessionData>(cookieStore, {
+    const sessionOptions: SessionOptions = {
       password: `${process.env.SESSION_SECRET}`,
       cookieName: "TULIP-COOKIE-MONSTER",
       cookieOptions: {
@@ -37,11 +39,13 @@ async function getSession(): Promise<IronSession<SessionData>> {
         sameSite: "lax",
         path: "/",
       },
-    });
+    };
+
+    return await getIronSession(cookieStore, sessionOptions);
   } catch (err) {
     console.warn("[Session] Falling back to in-memory session:", err);
 
-    // ✅ Full stub implementing IronSession<SessionData>
+    // ✅ Fixed fallback implementation
     const fallback: IronSession<SessionData> = {
       aut: memorySession?.aut ?? "",
       role: memorySession?.role ?? "",
@@ -53,8 +57,8 @@ async function getSession(): Promise<IronSession<SessionData>> {
         memorySession = null;
         return Promise.resolve();
       },
-      updateConfig(_options: SessionOptions) {
-        // no-op for in-memory fallback
+      updateConfig() {
+        // no-op - parameter removed since it's unused
       },
     };
 
@@ -67,15 +71,7 @@ async function getSession(): Promise<IronSession<SessionData>> {
  */
 export async function getSessionData(): Promise<SessionData | null> {
   const session = await getSession();
-
-  if (!session.aut || !session.role) {
-    return null;
-  }
-
-  return {
-    aut: session.aut,
-    role: session.role,
-  };
+  return session.aut && session.role ? { ...session } : null;
 }
 
 export async function createSession(authToken: string, role: string) {
