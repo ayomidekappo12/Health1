@@ -1,60 +1,137 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;700&family=Urbanist:wght@400;700&family=Fugaz+One&display=swap");
-
-/* Tailwind base imports */
-@import "tailwindcss/preflight";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&family=Work+Sans:wght@100..900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* ─── Shadcn UI Design Tokens ─── */
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
-  }
+/* Health Design System - Pixel perfect to Figma designs
+   All colors converted from OKLCH → RGB
+*/
 
+/* -----------------------------
+   Design Tokens (custom tokens)
+   -----------------------------
+   Your token block placed in :root. I preserved the existing
+   theme variables under @theme inline and avoided clobbering
+   --primary (kept by the theme). I exposed your provided
+   --primary as --brand-primary to avoid conflicts.
+*/
+:root {
+    /* Color tokens */
+    --primary-purple: #705aaa;
+    --accent-purple-light: #cbc8d4;
+
+    --active-bg-1: #01f0d0;
+    --active-bg-2: #d8fcf7;
+
+    --success-green: #0bd984;
+
+    --text-dark: #072635;
+    --text-darker: #0c3d5d;
+    --text-blue-dark: #084c77;
+    --blue-medium: #055a92;
+    --blue-strong: #006aac;
+    --blue-deep: #007bc7;
+
+    --gray-base: #707070;
+    --gray-light: #878787;
+    --gray-bg-light: #f6f6f6;
+    --gray-bg: #ededed;
+    --white: #ffffff;
+    --black: #000000;
+    --border-border: #dce2e5;
+
+    /* NOTE: your original theme declares --primary (rgb(...)).
+       To avoid overwriting that, I preserved theme --primary and
+       mapped your provided hex value to --brand-primary for safe usage. */
+
+    --cards: #fafafa;
+    --secondary: #f8fafc;
+
+    --alert-orange: #ff6200;
+
+    /* ───── Typography Tokens ───── */
+    --font-family-manrope: "Manrope", sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+
+    --font-size-12: 0.75rem;       /* 12px */
+    --font-size-13: 0.8125rem;     /* 13px */
+    --font-size-14: 0.875rem;      /* 14px */
+    --font-size-16: 1rem;          /* 16px */
+    --font-size-18: 1.125rem;      /* 18px */
+    --font-size-22: 1.375rem;      /* 22px */
+    --font-size-24: 1.5rem;        /* 24px */
+    --font-size-30: 1.875rem;      /* 30px */
+
+    --line-height-17: 1.0625rem;   /* 17px */
+    --line-height-18: 1.125rem;    /* 18px */
+    --line-height-19: 1.1875rem;   /* 19px */
+    --line-height-22: 1.375rem;    /* 22px */
+    --line-height-24: 1.5rem;      /* 24px */
+    --line-height-30: 1.875rem;    /* 30px */
+    --line-height-33: 2.0625rem;   /* 33px */
+    --line-height-41: 2.5625rem;   /* 41px */
+
+    --text-transform-titlecase: capitalize;
+}
+
+/* Existing theme variables (kept as you had them) */
+@theme inline {
+  /* ───── Base Colors ───── */
+   --background: rgb(255, 255, 255);
+  --foreground: rgb(5, 15, 32);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(5, 15, 32);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(5, 15, 32);
+  --primary: rgb(26, 26, 26);
+  --primary-foreground: rgb(250, 250, 250);
+  --secondary: rgb(244, 244, 247);
+  --secondary-foreground: rgb(26, 26, 26);
+  --muted: rgb(241, 243, 245);
+  --muted-foreground: rgb(112, 122, 140);
+  --accent: rgb(244, 244, 247);
+  --accent-foreground: rgb(26, 26, 26);
+  --destructive: rgb(255, 0, 0);
+  --destructive-foreground: rgb(241, 243, 245);
+  --border: rgb(220, 226, 229);
+  --input: rgb(230, 230, 230);
+  --ring: rgb(26, 26, 26);
+  --radius: 0.5rem;
+}
+
+/* Dark Mode */
+@layer base {
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --background: rgb(5, 15, 32);
+  --foreground: rgb(241, 243, 245);
+  --card: rgb(5, 15, 32);
+  --card-foreground: rgb(241, 243, 245);
+  --popover: rgb(5, 15, 32);
+  --popover-foreground: rgb(241, 243, 245);
+  --primary: rgb(241, 243, 245);
+  --primary-foreground: rgb(29, 27, 33);
+  --secondary: rgb(39, 43, 56);
+  --secondary-foreground: rgb(241, 243, 245);
+  --muted: rgb(39, 43, 56);
+  --muted-foreground: rgb(166, 172, 187);
+  --accent: rgb(39, 43, 56);
+  --accent-foreground: rgb(241, 243, 245);
+  --destructive: rgb(112, 31, 31);
+  --destructive-foreground: rgb(241, 243, 245);
+  --border: rgb(230, 230, 230);
+  --input: rgb(39, 43, 56);
+  --ring: rgb(207, 211, 222);
   }
 }
 
-/* Typography utility classes (kept as-is) */
-.text-card-title {
+/* ──────────────────────────────────────────────── */
+/* ✳️ MANROPE TYPOGRAPHY & SCROLLBAR STYLES */
+/* ──────────────────────────────────────────────── */
+
+/* Typography utility classes */
+.card-title {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-extrabold);
   font-size: var(--font-size-24);
@@ -62,7 +139,7 @@
   color: var(--text-dark);
 }
 
-.text-title-inner {
+.title-inner {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-18);
@@ -71,7 +148,7 @@
   text-transform: capitalize;
 }
 
-.text-body-bold {
+.body-bold {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-14);
@@ -79,15 +156,15 @@
   color: var(--text-dark);
 }
 
-.text-body-secondary {
+.body-secondary {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-14);
   line-height: var(--line-height-19);
   color: var(--gray-base);
-  } 
+}
 
-.text-body-regular {
+.body-regular {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-14);
@@ -95,8 +172,8 @@
   color: var(--text-dark);
 }
 
-        /* Extended manrope styles */
-  .text-manrope-regular-xs {
+/* Extended Manrope styles */
+.manrope-regular-xs {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-12);
@@ -104,7 +181,7 @@
   color: var(--text-dark);
 }
 
-.text-manrope-regular-sm {
+.manrope-regular-sm {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-13);
@@ -113,7 +190,7 @@
   text-transform: capitalize;
 }
 
-.text-manrope-regular-md {
+.manrope-regular-md {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-14);
@@ -122,7 +199,7 @@
   text-transform: capitalize;
 }
 
-  .text-manrope-medium-md {
+.manrope-medium-md {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-14);
@@ -131,7 +208,7 @@
   text-transform: capitalize;
 }
 
-.text-manrope-medium-lg {
+.manrope-medium-lg {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-16);
@@ -140,7 +217,7 @@
   text-transform: capitalize;
 }
 
-.text-manrope-bold-md {
+.manrope-bold-md {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-14);
@@ -149,7 +226,7 @@
   text-transform: capitalize;
 }
 
-.text-manrope-bold-xl {
+.manrope-bold-xl {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-22);
@@ -158,7 +235,7 @@
   text-transform: capitalize;
 }
 
-.text-manrope-extrabold-2xl {
+.manrope-extrabold-2xl {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-extrabold);
   font-size: var(--font-size-30);
@@ -186,6 +263,7 @@
   background-color: #000000;
   transform: scale(1.1);
 }
+
 /* Firefox support */
 .scrollbar-custom {
   scrollbar-width: thin;

@@ -6,9 +6,9 @@ import { Calendar, MapPin, Phone, PhoneCall, VenusAndMars } from "lucide-react";
 
 const PatientDetails = () => {
   return (
-    <div className="w-80 h-auto bg-white border-l border-border p-6 space-y-6">
+    <div className="w-80 h-auto bg-white border-l border-[#E6E6E6] p-6 space-y-6">
       {/* Patient Profile */}
-      <Card>
+      <Card className="border-[#E6E6E6]">
         <CardContent className="p-6 text-center">
           <Avatar className="w-24 h-24 mx-auto mb-4">
             <AvatarImage
@@ -22,10 +22,10 @@ const PatientDetails = () => {
       </Card>
 
       {/* Patient Information */}
-      <Card>
+      <Card className="border-[#E6E6E6]">
         <CardContent className="p-6 space-y-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
               <Calendar className="w-5 h-5 body-secondary" />
             </div>
             <div>
@@ -35,7 +35,7 @@ const PatientDetails = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
               <VenusAndMars className="w-5 h-5 body-secondary" />
             </div>
             <div>
@@ -45,7 +45,7 @@ const PatientDetails = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
               <Phone className="w-5 h-5 body-secondary" />
             </div>
             <div>
@@ -55,7 +55,7 @@ const PatientDetails = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
               <PhoneCall className="w-5 h-5 body-secondary" />
             </div>
             <div>
@@ -65,7 +65,7 @@ const PatientDetails = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#f2f2f2] rounded-xl flex items-center justify-center">
               <MapPin className="w-5 h-5 body-secondary" />
             </div>
             <div>
@@ -77,7 +77,7 @@ const PatientDetails = () => {
       </Card>
 
       {/* Show All Information Button */}
-      <button className="w-full bg-active-bg-1 text-white py-3 rounded-xl font-medium hover:bg-active-bg-1/80 transition-colors">
+      <button className="w-full bg-[#01f0d0] text-white py-3 rounded-xl font-medium hover:bg-[#01f0d0]/80 transition-colors cursor-pointer">
         Show All Information
       </button>
     </div>

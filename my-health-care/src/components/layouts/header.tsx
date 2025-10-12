@@ -33,7 +33,7 @@ const navItems: NavItemProps[] = [
 
 const MedicalHeader = () => {
   return (
-    <header className="bg-white border-b border-border md:px-4 py-2">
+    <div className="bg-white border-b border-[#E6E6E6] md:px-4">
       <div className="flex items-center justify-between">
         {/* Logo and Brand */}
         <div className="flex items-center gap-2">
@@ -92,7 +92,7 @@ const MedicalHeader = () => {
           </Button>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
@@ -107,9 +107,9 @@ function NavItem({ text, href, icon: Icon }: NavItemProps) {
     <Button
       className={`${
         isActive
-          ? "bg-active-bg-1 text-white body-bold rounded-full py-3 px-5"
+          ? "bg-[#01f0d0] text-white body-bold rounded-full py-3 px-5"
           : "body-bold"
-      } flex items-center gap-2 hover:text-white hover:bg-active-bg-1 justify-start w-full md:w-auto`}
+      } flex items-center gap-2 hover:text-white hover:bg-[#01f0d0] justify-start w-full md:w-auto cursor-pointer`}
       onClick={() => router.push(href)}
     >
       <Icon className="w-5 h-5 shrink-0" />

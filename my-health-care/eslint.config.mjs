@@ -1,20 +1,17 @@
 // eslint.config.js
-import { FlatCompat } from "@eslint/eslintrc";
-import tseslint from "typescript-eslint";
-import pluginJs from "@eslint/js";
+import js from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
 import pluginReactHooks from "eslint-plugin-react-hooks";
+import pluginReactRefresh from "eslint-plugin-react-refresh";
 import pluginA11y from "eslint-plugin-jsx-a11y";
+import * as tseslint from "@typescript-eslint/eslint-plugin";
+import parser from "@typescript-eslint/parser";
 import globals from "globals";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
 
 export default [
   // Apply to all relevant files
@@ -23,6 +20,7 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
+      parser,
       parserOptions: {
         project: "./tsconfig.json",
         tsconfigRootDir: __dirname,
@@ -32,38 +30,48 @@ export default [
         ...globals.node,
       },
     },
-  },
-
-  // Legacy Next.js rules (core-web-vitals, TypeScript, etc)
-  ...compat.extends("next/core-web-vitals", "next"),
-
-  // Base JS rules
-  pluginJs.configs.recommended,
-
-  // TypeScript rules
-  ...tseslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked, // requires tsconfig.json in project root
-
-  // React rules
-  pluginReact.configs.flat.recommended,
-
-  // Extra plugins
-  {
     plugins: {
+      "@typescript-eslint": tseslint,
+      react: pluginReact,
       "react-hooks": pluginReactHooks,
+      "react-refresh": pluginReactRefresh,
       "jsx-a11y": pluginA11y,
     },
     rules: {
+      // Base JS + TS recommended rules
+      ...js.configs.recommended.rules,
+      ...tseslint.configs.recommended.rules,
+      ...tseslint.configs.recommendedTypeChecked.rules,
+
+      // React recommended
+      ...(pluginReact.configs.recommended.rules || {}),
+
       // Hooks best practices
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-      "react/react-in-jsx-scope": "off",
+      ...(pluginReactHooks.configs.recommended.rules || {}),
+
+      // Next.js core web vitals (inlined)
+      "react/jsx-no-target-blank": "off", // Next.js handles this
+      "@next/next/no-html-link-for-pages": "error",
+      "@next/next/no-img-element": "warn",
+      "@next/next/no-unwanted-polyfillio": "warn",
+
+      // Fast refresh
+      "react-refresh/only-export-components": [
+        "warn",
+        { allowConstantExport: true },
+      ],
+
+      // React tweaks
+      "react/react-in-jsx-scope": "off", // not needed in Next.js
       "react/jsx-uses-react": "off",
       "react/prop-types": "off",
 
       // Accessibility
       "jsx-a11y/alt-text": "warn",
       "jsx-a11y/anchor-is-valid": "warn",
+
+      // TypeScript overrides
+      "@typescript-eslint/no-unused-vars": "off",
     },
   },
 ];

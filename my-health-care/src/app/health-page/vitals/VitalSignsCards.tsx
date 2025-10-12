@@ -34,7 +34,7 @@ const VitalSignsCards = () => {
         return (
           <Card
             key={vital.id}
-            className="hover:shadow-md transition-shadow bg-white rounded-xl"
+            className="hover:shadow-md transition-shadow bg-white rounded-xl border-[#E6E6E6]"
           >
             <CardContent className="p-4 md:p-6">
               <div className="flex items-start justify-between">
