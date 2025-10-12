@@ -57,7 +57,7 @@ const Index = () => {
         <div className="lg:hidden fixed top-20 right-4 z-10">
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="sm" className="bg-gray-bg-100 rounded-xl">
+              <Button size="sm" className="bg-gray-100 rounded-xl">
                 Patient Info
               </Button>
             </SheetTrigger>
