@@ -30,15 +30,15 @@ const bloodPressureData = [
 
 const DiagnosisHistory = () => {
   return (
-    <div className="flex-1 p-4 md:p-6 space-y-6 bg-card">
-      <Card className="bg-white rounded-xl">
+    <div className="flex-1 p-4 md:p-6 space-y-6">
+      <Card className="bg-white rounded-xl border-[#E6E6E6]">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <CardTitle className="card-title">Diagnosis History</CardTitle>
           <Select defaultValue="last6months">
-            <SelectTrigger className="w-full sm:w-40 manrope-regular-md bg-cards border-border rounded-xl">
+            <SelectTrigger className="w-full sm:w-40 manrope-regular-md border-[#E6E6E6] rounded-xl">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-white">
+            <SelectContent className="bg-white border-[#E6E6E6] rounded-xl">
               <SelectItem value="last6months">Last 6 months</SelectItem>
               <SelectItem value="last12months">Last 12 months</SelectItem>
               <SelectItem value="lastyear">Last year</SelectItem>
@@ -62,8 +62,13 @@ const DiagnosisHistory = () => {
             </div>
 
             <div className="h-48 md:h-64 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={bloodPressureData}>
+              <ResponsiveContainer
+                width="100%"
+                height="100%"
+              >
+                <LineChart
+                  data={bloodPressureData}
+                >
                   <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
                   <XAxis dataKey="month" stroke="#abb4c0" fontSize={12} />
                   <YAxis stroke="#abb4c0" fontSize={12} />

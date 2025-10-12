@@ -28,7 +28,7 @@ const Index = () => {
             <SheetTrigger asChild>
               <Button
                 size="sm"
-                className="flex items-center gap-2 bg-gray-bg-light rounded-xl"
+                className="flex items-center gap-2 bg-gray-100 rounded-xl"
               >
                 <Users className="w-4 h-4" />
                 Patients
@@ -57,7 +57,7 @@ const Index = () => {
         <div className="lg:hidden fixed top-20 right-4 z-10">
           <Sheet>
             <SheetTrigger asChild>
-              <Button size="sm" className="bg-gray-bg-light rounded-xl">
+              <Button size="sm" className="bg-gray-bg-100 rounded-xl">
                 Patient Info
               </Button>
             </SheetTrigger>

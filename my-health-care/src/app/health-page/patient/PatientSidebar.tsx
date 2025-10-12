@@ -113,15 +113,15 @@ const PatientSidebar = ({
   onPatientSelect,
 }: PatientSidebarProps) => {
   return (
-    <div className="w-80 h-[750px] bg-white border-r border-border flex flex-col">
+    <div className="w-80 h-[750px] bg-white border-r border-[#E6E6E6] flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-border">
+      <div className="p-6 border-b border-[#E6E6E6]">
         <h2 className="card-title mb-4">Patients</h2>
         <div className="relative ">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 card-title" />
           <Input
             placeholder="Search patients..."
-            className="bg-cards border-border rounded-xl pl-10 h-12 placeholder:body-secondary"
+            className="bg-cards border-[#E6E6E6] rounded-xl pl-10 h-12 placeholder:body-secondary"
           />
         </div>
       </div>
@@ -132,7 +132,7 @@ const PatientSidebar = ({
           <div
             key={patient.id}
             className={cn(
-              "flex items-center gap-3 p-4 border-b border-border cursor-pointer transition-colors",
+              "flex items-center gap-3 p-4 border-b border-[#E6E6E6] cursor-pointer transition-colors",
               selectedPatientId === patient.id
                 ? "bg-secondary border-l-4 border-l-active-bg-1"
                 : "hover:bg-muted/50"
