@@ -34,7 +34,7 @@ const Index = () => {
                 Patients
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="p-0 w-80">
+            <SheetContent side="left" className="p-0 w-80 m-4 rounded-xl">
               <PatientSidebar
                 selectedPatientId={selectedPatientId}
                 onPatientSelect={setSelectedPatientId}
@@ -43,7 +43,7 @@ const Index = () => {
           </Sheet>
         </div>
 
-        <div className="flex-1 flex flex-col ">
+        <div className="flex-1 md:flex-3 flex flex-col  md:-m-4">
           <DiagnosisHistory />
           <VitalSignsCards />
         </div>
@@ -61,7 +61,7 @@ const Index = () => {
                 Patient Info
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="p-0 w-80">
+            <SheetContent side="right" className="p-0 w-80 border-none m-8 rounded-xl overflow-y-auto scrollbar-custom scroll-smooth">
               <PatientDetails />
             </SheetContent>
           </Sheet>

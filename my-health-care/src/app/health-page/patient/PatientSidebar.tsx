@@ -113,7 +113,7 @@ const PatientSidebar = ({
   onPatientSelect,
 }: PatientSidebarProps) => {
   return (
-    <div className="w-80 h-[750px] bg-white border-r border-[#E6E6E6] flex flex-col">
+    <div className="w-80 h-[750px] bg-white border-r border-[#E6E6E6] flex flex-col mx-4 rounded-xl">
       {/* Header */}
       <div className="p-6 border-b border-[#E6E6E6]">
         <h2 className="card-title mb-4">Patients</h2>
@@ -134,7 +134,7 @@ const PatientSidebar = ({
             className={cn(
               "flex items-center gap-3 p-4 border-b border-[#E6E6E6] cursor-pointer transition-colors",
               selectedPatientId === patient.id
-                ? "bg-secondary border-l-4 border-l-active-bg-1"
+                ? "border-l-4 border-l-active-bg-1 bg-[#d8fcf7]"
                 : "hover:bg-muted/50"
             )}
             onClick={() => onPatientSelect?.(patient.id)}

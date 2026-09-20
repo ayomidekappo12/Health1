@@ -33,7 +33,7 @@ const navItems: NavItemProps[] = [
 
 const MedicalHeader = () => {
   return (
-    <div className="bg-white border-b border-[#E6E6E6] md:px-4">
+    <div className="bg-white border-b border-[#E6E6E6] md:px-4 m-4 rounded-full">
       <div className="flex items-center justify-between">
         {/* Logo and Brand */}
         <div className="flex items-center gap-2">

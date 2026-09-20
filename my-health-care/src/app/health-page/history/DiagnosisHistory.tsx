@@ -30,7 +30,7 @@ const bloodPressureData = [
 
 const DiagnosisHistory = () => {
   return (
-    <div className="flex-1 p-4 md:p-6 space-y-6">
+    <div className="flex-1 p-4 md:p-6 space-y-2 bg-background">
       <Card className="bg-white rounded-xl border-[#E6E6E6]">
         <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <CardTitle className="card-title">Diagnosis History</CardTitle>
@@ -45,7 +45,7 @@ const DiagnosisHistory = () => {
             </SelectContent>
           </Select>
         </CardHeader>
-        <CardContent>
+        <CardContent className="bg-[#f6f7f8] m-4 py-4 rounded-lg">
           <div className="mb-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4">
               <h3 className="title-inner">Blood Pressure</h3>
@@ -62,13 +62,8 @@ const DiagnosisHistory = () => {
             </div>
 
             <div className="h-48 md:h-64 w-full">
-              <ResponsiveContainer
-                width="100%"
-                height="100%"
-              >
-                <LineChart
-                  data={bloodPressureData}
-                >
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={bloodPressureData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
                   <XAxis dataKey="month" stroke="#abb4c0" fontSize={12} />
                   <YAxis stroke="#abb4c0" fontSize={12} />
