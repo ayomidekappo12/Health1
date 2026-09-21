@@ -4,7 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import PatientSidebar from "@/app/health-page/patient/PatientSidebar";
 import DiagnosisHistory from "@/app/health-page/history/DiagnosisHistory";
-import VitalSignsCards from "@/app/health-page/vitals/VitalSignsCards";
+//import VitalSignsCards from "@/app/health-page/vitals/VitalSignsCards"; line 48
 import PatientDetails from "@/app/health-page/details/PatientDetails";
 import { Users } from "lucide-react";
 
@@ -45,7 +45,7 @@ const Index = () => {
 
         <div className="flex-1 md:flex-3 flex flex-col  md:-m-4">
           <DiagnosisHistory />
-          <VitalSignsCards />
+        
         </div>
 
         {/* Desktop Patient Details */}
@@ -61,7 +61,7 @@ const Index = () => {
                 Patient Info
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="p-0 w-80 border-none m-8 rounded-xl overflow-y-auto scrollbar-custom scroll-smooth">
+            <SheetContent side="right" className="p-0 w-80 border-none m-4 rounded-xl overflow-y-auto scrollbar-custom scroll-smooth">
               <PatientDetails />
             </SheetContent>
           </Sheet>

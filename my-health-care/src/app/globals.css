@@ -149,6 +149,15 @@
   text-transform: capitalize;
 }
 
+.title-inner-details {
+  font-family: var(--font-family-manrope);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
+  color: var(--ray-base);
+  text-transform: capitalize;
+}
+
 .body-bold {
   font-family: var(--font-family-manrope);
   font-weight: var(--font-weight-bold);
@@ -163,6 +172,14 @@
   font-size: var(--font-size-14);
   line-height: var(--line-height-19);
   color: var(--text-dark);
+}
+
+.body-primary {
+  font-family: var(--font-family-manrope);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-19);
+  color: var(--gray-base);
 }
 
 .body-regular {

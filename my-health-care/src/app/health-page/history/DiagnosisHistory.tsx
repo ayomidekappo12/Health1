@@ -8,126 +8,147 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import VitalSignsCards from "@/app/health-page/vitals/VitalSignsCards";
 import {
   LineChart,
   Line,
   XAxis,
   YAxis,
   CartesianGrid,
-  Legend,
-  Tooltip,
+  ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
 
 const bloodPressureData = [
-  { month: "Oct 2023", systolic: 110, diastolic: 78 },
-  { month: "Nov 2023", systolic: 115, diastolic: 75 },
-  { month: "Dec 2023", systolic: 160, diastolic: 78 },
-  { month: "Jan 2024", systolic: 110, diastolic: 68 },
-  { month: "Feb 2024", systolic: 155, diastolic: 78 },
-  { month: "Mar 2024", systolic: 140, diastolic: 75 },
+  { month: "Oct, 2023", systolic: 120, diastolic: 110 },
+  { month: "Nov, 2023", systolic: 116, diastolic: 65 },
+  { month: "Dec, 2023", systolic: 160, diastolic: 109 },
+  { month: "Jan, 2024", systolic: 112, diastolic: 92 },
+  { month: "Feb, 2024", systolic: 150, diastolic: 70 },
+  { month: "Mar, 2024", systolic: 158, diastolic: 77 },
 ];
+
+const bloodPressureTicks = [60, 80, 100, 120, 140, 160, 180];
 
 const DiagnosisHistory = () => {
   return (
-    <div className="flex-1 p-4 md:p-6 space-y-2 bg-background">
-      <Card className="bg-white rounded-xl border-[#E6E6E6]">
-        <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div className="flex-1 bg-background p-2 sm:p-4 md:p-6">
+      <Card className="rounded-2xl border-[#e6e6e6] bg-white shadow-none">
+        <CardHeader className="px-5 py-5 sm:px-6 sm:py-3">
           <CardTitle className="card-title">Diagnosis History</CardTitle>
-          <Select defaultValue="last6months">
-            <SelectTrigger className="w-full sm:w-40 manrope-regular-md border-[#E6E6E6] rounded-xl">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-white border-[#E6E6E6] rounded-xl">
-              <SelectItem value="last6months">Last 6 months</SelectItem>
-              <SelectItem value="last12months">Last 12 months</SelectItem>
-              <SelectItem value="lastyear">Last year</SelectItem>
-            </SelectContent>
-          </Select>
         </CardHeader>
-        <CardContent className="bg-[#f6f7f8] m-4 py-4 rounded-lg">
-          <div className="mb-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-4">
-              <h3 className="title-inner">Blood Pressure</h3>
-              <div className="flex items-center gap-4 md:gap-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#E66FD2]"></div>
-                  <span className="body-secondary">Systolic</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#8C6FE6]"></div>
-                  <span className="body-secondary">Diastolic</span>
-                </div>
+        <CardContent className="m-4 rounded-xl bg-[#f6f1ff] p-4 sm:p-5 md:my-2 md:p-4">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_160px] lg:gap-2">
+            <div className="min-w-0">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <h3 className="title-inner">Blood Pressure</h3>
+                <Select defaultValue="last6months">
+                  <SelectTrigger className="h-auto w-[125px] border-0 bg-transparent p-0 text-right shadow-none focus:ring-0 manrope-regular-md">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="rounded-xl border-[#e6e6e6] bg-white">
+                    <SelectItem value="last6months">Last 6 months</SelectItem>
+                    <SelectItem value="last12months">Last 12 months</SelectItem>
+                    <SelectItem value="lastyear">Last year</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="h-[210px] w-full sm:h-[230px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={bloodPressureData}
+                    margin={{ top: 8, right: 4, left: -18, bottom: 0 }}
+                  >
+                    <CartesianGrid
+                      vertical={false}
+                      stroke="#d3cfdb"
+                      syncWithTicks={false}
+                      horizontalValues={bloodPressureTicks}
+                    />
+
+                    <ReferenceLine y={160} stroke="#d3cfdb" strokeWidth={1} />
+
+                    <XAxis
+                      dataKey="month"
+                      axisLine={false}
+                      tickLine={false}
+                      stroke="#193448"
+                      fontSize={12}
+                      dy={8}
+                      interval={0}
+                    />
+                    <YAxis
+                      domain={[60, 180]}
+                      ticks={bloodPressureTicks}
+                      axisLine={{
+                       stroke: "#d3cfdb",
+                       strokeWidth: 1,
+                      }}
+                      tickLine={false}
+                      stroke="#193448"
+                      fontSize={12}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="systolic"
+                      stroke="#E66FD2"
+                      strokeWidth={2}
+                      activeDot={false}
+                      dot={{
+                        fill: "#E66FD2",
+                        stroke: "#E66FD2",
+                        strokeWidth: 1,
+                        r: 5,
+                      }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="diastolic"
+                      stroke="#8C6FE6"
+                      strokeWidth={2}
+                      activeDot={false}
+                      dot={{
+                        fill: "#8C6FE6",
+                        stroke: "#8C6FE6",
+                        strokeWidth: 1,
+                        r: 5,
+                      }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
             </div>
 
-            <div className="h-48 md:h-64 w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={bloodPressureData}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
-                  <XAxis dataKey="month" stroke="#abb4c0" fontSize={12} />
-                  <YAxis stroke="#abb4c0" fontSize={12} />
-                  <Tooltip />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="systolic"
-                    stroke="#E66FD2"
-                    strokeWidth={2}
-                    dot={{
-                      fill: "#E66FD2",
-                      strokeWidth: 2,
-                      r: 4,
-                    }}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="diastolic"
-                    stroke="#8C6FE6"
-                    strokeWidth={2}
-                    dot={{
-                      fill: "#8C6FE6",
-                      strokeWidth: 2,
-                      r: 4,
-                    }}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 justify-between">
-              <div className="space-y-2">
-                <div className="flex items-center space-x-12">
-                  <span className="body-secondary">Systolic</span>
-                  <span className="text-lg font-bold body-secondary">120</span>
+            <div className="flex flex-col justify-center lg:pl-8 pb-14 ">
+              <div className="border-b border-[#d8d3df] pb-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-[#e66fd2]" />
+                  <span className="body-bold">Systolic</span>
                 </div>
-                <div className="flex items-center gap-2 body-secondary">
-                  <span>↑ Higher than Average</span>
+                <p className="mt-2 text-2xl font-bold text-[#072635]">160</p>
+                <div className="mt-2 flex items-center gap-2 body-secondary">
+                  <span className="text-[#072635]">▲</span>
+                  <span>Higher than Average</span>
                 </div>
               </div>
-              <div className="space-y-2">
-                <div className="flex items-center space-x-12">
-                  <span className="body-secondary">Diastolic</span>
-                  <span className="text-lg font-bold body-secondary">80</span>
+              <div className="pt-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-[#8c6fe6]" />
+                  <span className="body-bold">Diastolic</span>
                 </div>
-                <div className="flex items-center gap-2 body-secondary">
-                  <span>↓ Lower than Average</span>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center">
-                  <span className="body-secondary">
-                    The result for your BP is:
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 body-secondary pt-1">
-                  <span>✔ Normal</span>
+                <p className="mt-2 text-2xl font-bold text-[#072635]">78</p>
+                <div className="mt-2 flex items-center gap-2 body-secondary">
+                  <span className="text-[#072635]">▼</span>
+                  <span>Lower than Average</span>
                 </div>
               </div>
             </div>
           </div>
         </CardContent>
+        <div className="flex flex-col">
+          <VitalSignsCards />
+        </div>
       </Card>
     </div>
   );

@@ -149,8 +149,8 @@ const PatientSidebar = ({
               </AvatarFallback>
             </Avatar>
             <div className="flex-1 min-w-0">
-              <p className="manrope-medium-lg truncate">{patient.name}</p>
-              <p className="text-sm body-secondary">
+              <p className="font-Manrope body-bold truncate">{patient.name}</p>
+              <p className="text-sm body-primary">
                 {patient.gender}, {patient.age}
               </p>
             </div>

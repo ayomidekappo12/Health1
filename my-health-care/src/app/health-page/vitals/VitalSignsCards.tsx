@@ -10,6 +10,7 @@ const vitalSigns = [
     value: "20 bpm",
     icon: "images/respiratory rate.svg",
     bgColor: "bg-[#e0f3fa]",
+    status: "Normal",
   },
   {
     id: "temperature",
@@ -17,6 +18,7 @@ const vitalSigns = [
     value: "98.6°F",
     icon: "images/temperature.svg",
     bgColor: "bg-[#ffe6e9]",
+    status: "Normal",
   },
   {
     id: "heartrate",
@@ -24,38 +26,44 @@ const vitalSigns = [
     value: "78 bpm",
     icon: "images/HeartBPM.svg",
     bgColor: "bg-[#ffe6f1]",
+    status: "Lower than Average",
   },
 ];
 
 const VitalSignsCards = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 md:p-6 pt-0">
+    <div className="grid grid-cols-1 gap-4 p-4 pt-0 sm:grid-cols-2 md:p-3 lg:grid-cols-3">
       {vitalSigns.map((vital) => {
         return (
           <Card
             key={vital.id}
-            className="hover:shadow-md transition-shadow bg-white rounded-xl border-[#E6E6E6]"
+            className={`manrope-medium-md rounded-xl border-0 shadow-none transition-shadow hover:shadow-md ${vital.bgColor}`}
           >
-            <CardContent className={`p-4 md:p-6 ${vital.bgColor} rounded-lg`}>
-              <div className="flex items-start justify-between">
-                <div className="space-y-2">
-                  <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center`}
-                  >
-                    <Image
-                      src={vital.icon}
-                      alt="logo"
-                      width={100}
-                      height={100}
-                      className="self-center transition-transform transform hover:scale-110"
-                      loading="lazy"
+            <CardContent className="flex min-h-[242px] flex-col items-start p-4 sm:p-5">
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-white">
+                <Image
+                  src={`/${vital.icon}`}
+                  alt={`${vital.title} icon`}
+                  width={76}
+                  height={76}
+                  className="h-[76px] w-[76px] transition-transform hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div className="mt-4">
+                <p className="body-secondary">{vital.title}</p>
+                <p className="title-inner text-[1.875rem] leading-[2.25rem]">
+                  {vital.value}
+                </p>
+                <p className="body-secondary mt-4 flex items-center gap-2">
+                  {vital.id === "heartrate" && (
+                    <span
+                      aria-hidden="true"
+                      className="h-0 w-0 border-x-[5px] border-t-[6px] border-x-transparent border-t-[#072635]"
                     />
-                  </div>
-                  <div>
-                    <p className="body-secondary">{vital.title}</p>
-                    <p className="title-inner">{vital.value}</p>
-                  </div>
-                </div>
+                  )}
+                  {vital.status}
+                </p>
               </div>
             </CardContent>
           </Card>
