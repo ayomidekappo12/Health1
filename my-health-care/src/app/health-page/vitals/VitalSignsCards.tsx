@@ -32,7 +32,7 @@ const vitalSigns = [
 
 const VitalSignsCards = () => {
   return (
-    <div className="grid grid-cols-1 gap-4 p-4 pt-0 sm:grid-cols-2 md:p-3 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 p-4 pt-0 sm:grid-cols-2 md:p-4 lg:grid-cols-3">
       {vitalSigns.map((vital) => {
         return (
           <Card

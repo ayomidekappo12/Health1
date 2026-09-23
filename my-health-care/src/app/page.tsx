@@ -4,7 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import PatientSidebar from "@/app/health-page/patient/PatientSidebar";
 import DiagnosisHistory from "@/app/health-page/history/DiagnosisHistory";
-//import VitalSignsCards from "@/app/health-page/vitals/VitalSignsCards"; line 48
+import LabReport from "@/app/health-page/lab_report/LabReport";
 import PatientDetails from "@/app/health-page/details/PatientDetails";
 import { Users } from "lucide-react";
 
@@ -12,7 +12,7 @@ const Index = () => {
   const [selectedPatientId, setSelectedPatientId] = useState("12");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="w-auto h-auto bg-background py-2">
       <div className="flex">
         {/* Desktop Sidebar */}
         <div className="hidden lg:block">
@@ -43,14 +43,21 @@ const Index = () => {
           </Sheet>
         </div>
 
-        <div className="flex-1 md:flex-3 flex flex-col  md:-m-4">
+        <div className="flex-1 md:flex-3 flex flex-col md:-m-4">
           <DiagnosisHistory />
-        
+          <div className="mb-4">
+            <LabReport />
+          </div>
         </div>
 
         {/* Desktop Patient Details */}
-        <div className="hidden lg:block">
-          <PatientDetails />
+        <div className="flex flex-col gap-5">
+          <div className="hidden lg:block">
+            <PatientDetails />
+          </div>
+          <div className="hidden lg:block">
+            <LabReport />
+          </div>
         </div>
 
         {/* Mobile Patient Details Sheet */}
@@ -61,7 +68,10 @@ const Index = () => {
                 Patient Info
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="p-0 w-80 border-none m-4 rounded-xl overflow-y-auto scrollbar-custom scroll-smooth">
+            <SheetContent
+              side="right"
+              className="p-0 w-80 border-none m-4 rounded-xl overflow-y-auto scrollbar-custom scroll-smooth"
+            >
               <PatientDetails />
             </SheetContent>
           </Sheet>

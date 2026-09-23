@@ -113,7 +113,7 @@ const PatientSidebar = ({
   onPatientSelect,
 }: PatientSidebarProps) => {
   return (
-    <div className="w-80 h-[750px] bg-white border-r border-[#E6E6E6] flex flex-col mx-4 rounded-xl">
+    <div className="w-80 h-[1054px] bg-white border-r border-[#E6E6E6] flex flex-col mx-4 rounded-xl">
       {/* Header */}
       <div className="p-6 border-b border-[#E6E6E6]">
         <h2 className="card-title mb-4">Patients</h2>

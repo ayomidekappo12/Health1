@@ -33,7 +33,7 @@ const navItems: NavItemProps[] = [
 
 const MedicalHeader = () => {
   return (
-    <div className="bg-white border-b border-[#E6E6E6] md:px-4 m-4 rounded-full">
+    <div className="w-auto bg-white border-b border-[#E6E6E6] lg:px-4 m-4 rounded-xl lg:rounded-full">
       <div className="flex items-center justify-between">
         {/* Logo and Brand */}
         <div className="flex items-center gap-2">
@@ -55,7 +55,7 @@ const MedicalHeader = () => {
         </nav>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button size="sm">
@@ -81,7 +81,7 @@ const MedicalHeader = () => {
             />
             <AvatarFallback>JS</AvatarFallback>
           </Avatar>
-          <div className="hidden sm:block">
+          <div className="hidden lg:block">
             <p className="font-Manrope body-bold">Dr. Jose Simmons</p>
             <p className="font-Manrope body-secondary">General Practitioner</p>
           </div>
