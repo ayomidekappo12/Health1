@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import PatientSidebar from "@/app/health-page/patient/PatientSidebar";
 import DiagnosisHistory from "@/app/health-page/history/DiagnosisHistory";
+import DiagnosticList from "@/app/health-page/diagnostic List/DiagnosticList";
 import LabReport from "@/app/health-page/lab_report/LabReport";
 import PatientDetails from "@/app/health-page/details/PatientDetails";
 import { Users } from "lucide-react";
@@ -43,9 +44,12 @@ const Index = () => {
           </Sheet>
         </div>
 
-        <div className="flex-1 md:flex-3 flex flex-col md:-m-4">
+        <div className="flex-1 md:flex-3 flex flex-col md:-mt-6 md:-mx-4">
           <DiagnosisHistory />
-          <div className="mb-4">
+          <div className="">
+            <DiagnosticList />
+          </div>
+          <div className="block mt-4 lg:hidden">
             <LabReport />
           </div>
         </div>

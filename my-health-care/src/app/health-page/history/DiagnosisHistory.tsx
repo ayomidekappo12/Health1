@@ -34,7 +34,7 @@ const DiagnosisHistory = () => {
   return (
     <div className="flex-1 bg-background h-[673px] p-2 sm:p-4 md:p-6">
       <Card className="rounded-2xl border-[#e6e6e6] bg-white shadow-none">
-        <CardHeader className="px-5 py-5 sm:px-6 sm:py-4">
+        <CardHeader className="px-5 py-5 sm:px-6">
           <CardTitle className="card-title">Diagnosis History</CardTitle>
         </CardHeader>
         <CardContent className="m-4 rounded-xl bg-[#f6f1ff] p-4 sm:p-5 md:my-2 md:p-4">

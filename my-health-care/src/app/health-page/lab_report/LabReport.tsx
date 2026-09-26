@@ -43,7 +43,7 @@ const LabResults = ({
   onResultsSelect,
 }: LabResultsProps) => {
   return (
-    <Card className="h-[296px] w-auto bg-white mx-4 p-3 rounded-xl overflow-hidden">
+    <Card className="h-[296px] w-auto bg-white mx-2 sm:mx-6 lg:mx-4 p-3 rounded-xl overflow-hidden">
       <CardContent className="flex h-full flex-col p-0">
         <h2 className="card-title pt-2">
           Lab Results
