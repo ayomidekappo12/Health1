@@ -35,24 +35,6 @@ const MedicalHeader = () => {
   return (
     <div className="w-auto bg-white border-b border-[#E6E6E6] lg:px-4 m-4 rounded-xl lg:rounded-full">
       <div className="flex items-center justify-between">
-        {/* Logo and Brand */}
-        <div className="flex items-center gap-2">
-          <Image
-            src="/images/TestLogo.svg"
-            alt="logo"
-            width={211}
-            height={48}
-            className="py-3 mr-12"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          {navItems.map((item) => (
-            <NavItem key={item.href} {...item} />
-          ))}
-        </nav>
 
         {/* Mobile Navigation */}
         <div className="lg:hidden">
@@ -71,6 +53,27 @@ const MedicalHeader = () => {
             </SheetContent>
           </Sheet>
         </div>
+        
+        {/* Logo and Brand */}
+        <div className="flex items-center gap-2">
+          <Image
+            src="/images/TestLogo.svg"
+            alt="logo"
+            width={211}
+            height={48}
+            className="py-3 mr-12"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-5">
+          {navItems.map((item) => (
+            <NavItem key={item.href} {...item} />
+          ))}
+        </nav>
+
+        
 
         {/* User Profile */}
         <div className="flex items-center gap-2 sm:gap-3">
@@ -107,12 +110,12 @@ function NavItem({ text, href, icon: Icon }: NavItemProps) {
     <Button
       className={`${
         isActive
-          ? "bg-[#01f0d0] text-white body-bold rounded-full py-3 px-5"
+          ? "bg-[#01f0d0] text-white body-bold rounded-full py-2 px-2 lg:py-3 lg:px-5"
           : "body-bold"
       } flex items-center gap-2 hover:text-white hover:bg-[#01f0d0] justify-start w-full md:w-auto cursor-pointer`}
       onClick={() => router.push(href)}
     >
-      <Icon className="w-5 h-5 shrink-0" />
+      <Icon className="w-3 h-3 lg:w-5 lg:h-5 shrink-0" />
       <p className="font-Manrope body-bold">{text}</p>
     </Button>
   );
