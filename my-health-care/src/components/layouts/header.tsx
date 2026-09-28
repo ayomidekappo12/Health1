@@ -61,7 +61,7 @@ const MedicalHeader = () => {
             alt="logo"
             width={211}
             height={48}
-            className="py-3 mr-12"
+            className="py-2 lg:py-3 mr-12"
             loading="lazy"
           />
         </div>
@@ -77,7 +77,7 @@ const MedicalHeader = () => {
 
         {/* User Profile */}
         <div className="flex items-center gap-2 sm:gap-3">
-          <Avatar className="w-10 h-10">
+          <Avatar className="hidden sm:flex w-10 h-10">
             <AvatarImage
               src="/images/senior-woman/senior-woman-doctor.png"
               alt="Dr. Jose Simmons"
