@@ -1,34 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Diagnostic } from "@/lib/patients";
 
-const diagnoses = [
-  {
-    name: "Hypertension",
-    description: "Chronic high blood pressure",
-    status: "Under Observation",
-  },
-  {
-    name: "Type 2 Diabetes",
-    description: "Insulin resistance and elevated blood sugar",
-    status: "Cured",
-  },
-  {
-    name: "Asthma",
-    description: "Recurrent episodes of bronchial constriction",
-    status: "Inactive",
-  },
-  {
-    name: "Osteoarthritis",
-    description: "Degeneration of joint cartilage",
-    status: "Untreated",
-  },
-  {
-    name: "Allergic Rhinitis",
-    description: "Seasonal nasal inflammation caused by allergens",
-    status: "Active",
-  },
-];
-
-const DiagnosticList = () => {
+const DiagnosticList = ({ diagnoses }: { diagnoses: Diagnostic[] }) => {
   return (
     <Card className="mx-2 rounded-2xl border-0 bg-white sm:mx-6 overflow-hidden">
       <CardContent className="p-4">

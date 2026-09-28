@@ -3,21 +3,22 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MapPin, Phone, PhoneCall, VenusAndMars } from "lucide-react";
+import { Patient } from "@/lib/patients";
 
-const PatientDetails = () => {
+const PatientDetails = ({ patient }: { patient: Patient }) => {
   return (
     <div className="w-80 h-[740px] bg-white p-6 space-y-6 mx-4 rounded-xl">
       {/* Patient Profile */}
       <div className="">
         <div className="p-4 text-center">
-          <Avatar className="w-40 h-40 mx-auto mb-4">
+          <Avatar className="w-35 h-37 mx-auto mb-4">
             <AvatarImage
-              src="/images/Layer2/Layer 2.png"
-              alt="Jessica Taylor"
+              src={patient.profile_picture}
+              alt={patient.name}
             />
             <AvatarFallback>JT</AvatarFallback>
           </Avatar>
-          <h3 className="card-title">Jessica Taylor</h3>
+          <h3 className="card-title">{patient.name}</h3>
         </div>
       </div>
 
@@ -30,7 +31,7 @@ const PatientDetails = () => {
             </div>
             <div>
               <p className="body-secondary">Date Of Birth</p>
-              <p className="title-inner-details">August 23, 1996</p>
+              <p className="title-inner-details">{patient.date_of_birth}</p>
             </div>
           </div>
 
@@ -40,7 +41,7 @@ const PatientDetails = () => {
             </div>
             <div>
               <p className="body-secondary">Gender</p>
-              <p className="title-inner-details">Female</p>
+              <p className="title-inner-details">{patient.gender}</p>
             </div>
           </div>
 
@@ -50,7 +51,7 @@ const PatientDetails = () => {
             </div>
             <div>
               <p className="body-secondary">Contact Info</p>
-              <p className="title-inner-details">(415) 555-1234</p>
+              <p className="title-inner-details">{patient.phone_number}</p>
             </div>
           </div>
 
@@ -60,7 +61,7 @@ const PatientDetails = () => {
             </div>
             <div>
               <p className="body-secondary">Emergency Contacts</p>
-              <p className="title-inner-details">(415) 555-5678</p>
+              <p className="title-inner-details">{patient.emergency_contact}</p>
             </div>
           </div>
 
@@ -70,7 +71,7 @@ const PatientDetails = () => {
             </div>
             <div>
               <p className="body-secondary">Insurance Provider</p>
-              <p className="title-inner-details">Sunrise Health Assurance</p>
+              <p className="title-inner-details">{patient.insurance_type}</p>
             </div>
           </div>
         </div>

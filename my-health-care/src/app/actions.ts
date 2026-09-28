@@ -45,7 +45,7 @@ async function getSession(): Promise<IronSession<SessionData>> {
   } catch (err) {
     console.warn("[Session] Falling back to in-memory session:", err);
 
-    // ✅ Fixed fallback implementation
+    // Fixed fallback implementation
     const fallback: IronSession<SessionData> = {
       aut: memorySession?.aut ?? "",
       role: memorySession?.role ?? "",
@@ -67,7 +67,7 @@ async function getSession(): Promise<IronSession<SessionData>> {
 }
 
 /**
- * ✅ Strongly typed session data
+ *  Strongly typed session data
  */
 export async function getSessionData(): Promise<SessionData | null> {
   const session = await getSession();

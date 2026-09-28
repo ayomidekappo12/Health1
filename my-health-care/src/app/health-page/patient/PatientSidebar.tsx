@@ -5,111 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MoreHorizontal } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-
-interface Patient {
-  id: string;
-  name: string;
-  gender: string;
-  age: number;
-  image: string;
-  isActive?: boolean;
-}
-
-const patients: Patient[] = [
-  {
-    id: "1",
-    image: "/images/Layer8/Layer 8.png",
-    name: "Emily Williams",
-    gender: "Female",
-    age: 18,
-  },
-  {
-    id: "2",
-    image: "/images/Layer1/Layer 1.png",
-    name: "Ryan Johnson",
-    gender: "Male",
-    age: 45,
-  },
-  {
-    id: "3",
-    image: "/images/Layer3/Layer 3.png",
-    name: "Brandon Mitchell",
-    gender: "Male",
-    age: 36,
-  },
-  {
-    id: "4",
-    image: "/images/Layer2/Layer 2.png",
-    name: "Jessica Taylor",
-    gender: "Female",
-    age: 28,
-  },
-  {
-    id: "5",
-    image: "/images/Layer6/Layer 6.png",
-    name: "Samantha Johnson",
-    gender: "Female",
-    age: 56,
-  },
-  {
-    id: "6",
-    image: "/images/Layer12/Layer 12.png",
-    name: "Ashley Martinez",
-    gender: "Female",
-    age: 54,
-  },
-  {
-    id: "7",
-    image: "/images/Layer10/Layer 10.png",
-    name: "Olivia Brown",
-    gender: "Female",
-    age: 32,
-  },
-  {
-    id: "8",
-    image: "/images/Layer9/Layer 9.png",
-    name: "Tyler Davis",
-    gender: "Male",
-    age: 19,
-  },
-  {
-    id: "9",
-    image: "/images/Layer4/Layer 4.png",
-    name: "Kevin Anderson",
-    gender: "Male",
-    age: 30,
-  },
-  {
-    id: "10",
-    image: "/images/Layer5/Layer 5.png",
-    name: "Dylan Thompson",
-    gender: "Male",
-    age: 36,
-  },
-  {
-    id: "11",
-    image: "/images/Layer7/Layer 7.png",
-    name: "Nathan Evans",
-    gender: "Male",
-    age: 58,
-  },
-  {
-    id: "12",
-    image: "/images/pexels-photo/pexels-photo-1.png",
-    name: "Mike Nolan",
-    gender: "Male",
-    age: 31,
-  },
-];
+import { Patient } from "@/lib/patients";
 
 interface PatientSidebarProps {
-  selectedPatientId?: string;
-  onPatientSelect?: (patientId: string) => void;
+  patients: Patient[];
+  selectedPatientName: string;
+  onPatientSelect?: (patientName: string) => void;
 }
 
 const PatientSidebar = ({
-  selectedPatientId = "4",
+  patients,
+  selectedPatientName,
   onPatientSelect,
 }: PatientSidebarProps) => {
   return (
@@ -130,17 +36,17 @@ const PatientSidebar = ({
       <div className="flex-1 overflow-y-auto scrollbar-custom scroll-smooth">
         {patients.map((patient) => (
           <div
-            key={patient.id}
+            key={patient.name}
             className={cn(
               "flex items-center gap-3 p-4 border-b border-[#E6E6E6] cursor-pointer transition-colors",
-              selectedPatientId === patient.id
+              selectedPatientName === patient.name
                 ? "border-l-4 border-l-active-bg-1 bg-[#d8fcf7]"
                 : "hover:bg-muted/50"
             )}
-            onClick={() => onPatientSelect?.(patient.id)}
+            onClick={() => onPatientSelect?.(patient.name)}
           >
             <Avatar className="w-12 h-12">
-              <AvatarImage src={patient.image} alt={patient.name} />
+              <AvatarImage src={patient.profile_picture} alt={patient.name} />
               <AvatarFallback>
                 {patient.name
                   .split(" ")

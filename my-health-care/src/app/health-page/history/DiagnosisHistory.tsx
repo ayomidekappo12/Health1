@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import VitalSignsCards from "@/app/health-page/vitals/VitalSignsCards";
+import { Patient } from "@/lib/patients";
 import {
   LineChart,
   Line,
@@ -19,18 +20,20 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const bloodPressureData = [
-  { month: "Oct, 2023", systolic: 120, diastolic: 110 },
-  { month: "Nov, 2023", systolic: 116, diastolic: 65 },
-  { month: "Dec, 2023", systolic: 160, diastolic: 109 },
-  { month: "Jan, 2024", systolic: 112, diastolic: 92 },
-  { month: "Feb, 2024", systolic: 150, diastolic: 70 },
-  { month: "Mar, 2024", systolic: 158, diastolic: 77 },
-];
-
 const bloodPressureTicks = [60, 80, 100, 120, 140, 160, 180];
 
-const DiagnosisHistory = () => {
+const DiagnosisHistory = ({ patient }: { patient: Patient }) => {
+  const bloodPressureData = patient.diagnosis_history.map((entry) => ({
+    month: `${entry.month.slice(0, 3)} ${entry.year}`,
+    systolic: entry.blood_pressure.systolic.value,
+    diastolic: entry.blood_pressure.diastolic.value,
+  }));
+  const latest = patient.diagnosis_history[patient.diagnosis_history.length - 1];
+
+  if (!latest) {
+    return null;
+  }
+
   return (
     <div className="flex-1 bg-background h-[673px] p-2 sm:p-4 md:p-6">
       <Card className="rounded-2xl border-[#e6e6e6] bg-white shadow-none">
@@ -74,9 +77,11 @@ const DiagnosisHistory = () => {
                       axisLine={false}
                       tickLine={false}
                       stroke="#193448"
-                      fontSize={12}
+                      fontSize={11}
                       dy={8}
                       interval={0}
+                      minTickGap={18}
+                      tickFormatter={(value) => value}
                     />
                     <YAxis
                       domain={[60, 180]}
@@ -126,10 +131,12 @@ const DiagnosisHistory = () => {
                   <span className="h-3 w-3 rounded-full bg-[#e66fd2]" />
                   <span className="body-bold">Systolic</span>
                 </div>
-                <p className="mt-2 text-2xl font-bold text-[#072635]">160</p>
+                <p className="mt-2 text-2xl font-bold text-[#072635]">
+                  {latest.blood_pressure.systolic.value}
+                </p>
                 <div className="mt-2 flex items-center gap-2 body-secondary">
                   <span className="text-[#072635]">▲</span>
-                  <span>Higher than Average</span>
+                  <span>{latest.blood_pressure.systolic.levels}</span>
                 </div>
               </div>
               <div className="pt-4">
@@ -137,17 +144,19 @@ const DiagnosisHistory = () => {
                   <span className="h-3 w-3 rounded-full bg-[#8c6fe6]" />
                   <span className="body-bold">Diastolic</span>
                 </div>
-                <p className="mt-2 text-2xl font-bold text-[#072635]">78</p>
+                <p className="mt-2 text-2xl font-bold text-[#072635]">
+                  {latest.blood_pressure.diastolic.value}
+                </p>
                 <div className="mt-2 flex items-center gap-2 body-secondary">
                   <span className="text-[#072635]">▼</span>
-                  <span>Lower than Average</span>
+                  <span>{latest.blood_pressure.diastolic.levels}</span>
                 </div>
               </div>
             </div>
           </div>
         </CardContent>
         <div className="flex flex-col">
-          <VitalSignsCards />
+          <VitalSignsCards history={latest} />
         </div>
       </Card>
     </div>

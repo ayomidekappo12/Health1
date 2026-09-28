@@ -2,35 +2,36 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { DiagnosisHistoryEntry } from "@/lib/patients";
 
-const vitalSigns = [
-  {
-    id: "respiratory",
-    title: "Respiratory Rate",
-    value: "20 bpm",
-    icon: "images/respiratory rate.svg",
-    bgColor: "bg-[#e0f3fa]",
-    status: "Normal",
-  },
-  {
-    id: "temperature",
-    title: "Temperature",
-    value: "98.6°F",
-    icon: "images/temperature.svg",
-    bgColor: "bg-[#ffe6e9]",
-    status: "Normal",
-  },
-  {
-    id: "heartrate",
-    title: "Heart Rate",
-    value: "78 bpm",
-    icon: "images/HeartBPM.svg",
-    bgColor: "bg-[#ffe6f1]",
-    status: "Lower than Average",
-  },
-];
+const VitalSignsCards = ({ history }: { history: DiagnosisHistoryEntry }) => {
+  const vitalSigns = [
+    {
+      id: "respiratory",
+      title: "Respiratory Rate",
+      value: `${history.respiratory_rate.value} bpm`,
+      icon: "images/respiratory rate.svg",
+      bgColor: "bg-[#e0f3fa]",
+      status: history.respiratory_rate.levels,
+    },
+    {
+      id: "temperature",
+      title: "Temperature",
+      value: `${history.temperature.value}°F`,
+      icon: "images/temperature.svg",
+      bgColor: "bg-[#ffe6e9]",
+      status: history.temperature.levels,
+    },
+    {
+      id: "heartrate",
+      title: "Heart Rate",
+      value: `${history.heart_rate.value} bpm`,
+      icon: "images/HeartBPM.svg",
+      bgColor: "bg-[#ffe6f1]",
+      status: history.heart_rate.levels,
+    },
+  ];
 
-const VitalSignsCards = () => {
   return (
     <div className="grid grid-cols-1 gap-4 p-4 pt-0 sm:grid-cols-2 md:p-4 lg:grid-cols-3">
       {vitalSigns.map((vital) => {
